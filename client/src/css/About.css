@@ -1,0 +1,181 @@
+.about-container {
+    background-color: #f7f7f7; 
+}
+
+.about-banner {
+    width: 100%;
+    height: 250px; 
+    background-image: url('./images/about-banner.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    position: relative; 
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5rem;
+}
+
+.about-banner-text {
+    line-height: 1.3;
+}
+
+.about-banner-htext {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(30px, 4vw, 2.25rem);
+    color: #242E34;
+}
+
+.about-info-container {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 2rem;
+}
+
+.about-info-htext {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550; 
+    font-size: clamp(24px, 4vw, 1.7rem);
+    color: #242E34;
+}
+
+.about-info-htext img {
+    height: 4rem; 
+    margin-bottom: 1rem;
+}
+
+.about-info-stext {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: 1rem;
+    color: #242E34;
+    line-height: 1.35;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.about-subbanner {
+    width: 80%;
+    margin-left: 10%;
+    height: 125px; 
+    background-color: #D3DDD7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 4rem;
+    border-radius: 10px;
+}
+
+.about-search-container {
+    position: relative; 
+    width: fit-content; 
+    margin: 0 auto; 
+}
+
+.about-search-bar {
+    width: clamp(250px, 30vw, 500px); 
+    height: 75px; 
+    max-width: 70vw;
+    padding: 0.5rem 1.5rem; 
+    padding-left: 87px; 
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 50px; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 500;
+    color: #36454F;
+    font-size: 1rem; 
+    background-color: white; 
+    background-image: url('./images/search.png'); 
+    background-repeat: no-repeat;
+    background-position: 40px center; 
+    background-size: 20px 20px; 
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    cursor: default;
+    
+}
+
+.about-search-bar::placeholder {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1rem; 
+}
+
+.about-search-bar:focus {
+    outline: none; 
+}
+
+.about-search-bar.no-shadow {
+    box-shadow: none; 
+}
+
+.catalog-image {
+    width: clamp(15rem, 75vw, 50rem);
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.bookmark-image {
+    width: clamp(15rem, 75vw, 50rem);
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.info-course-button {
+    background-color: #36454F; 
+    color: white; 
+    border: none; 
+    width: clamp(12rem, 20vw, 14rem);
+    height: 48px; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s;
+    cursor: default;
+}
+
+.info-course-button-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 1.2; 
+    display: flex;            
+    align-items: center;      
+    width: fit-content; 
+    margin: 0 auto; 
+}
+
+.info-course-button-text img {
+    height: 15px; 
+    width: 15px; 
+    margin-right: 1rem;
+}
+.quick-links {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.quick-links a {
+    text-decoration: none; 
+    color: #007bff; 
+}
+
+.about-info-stext a {
+    text-decoration: none; 
+    color: #242E34; 
+    font-weight: bold; 
+}
+
+.about-info-stext a:hover {
+    text-decoration: underline; 
+}

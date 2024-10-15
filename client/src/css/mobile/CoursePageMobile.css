@@ -1,0 +1,497 @@
+.university-container-m {
+    background-color: #f7f7f7; 
+}
+
+.university-banner-m {
+    width: 100%;
+    height: 120px; 
+    background-image: url('.././images/schoolbg-cropped.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    position: relative; 
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.5); 
+}
+
+.university-banner-text-m {
+    line-height: 1.3;
+}
+
+.university-banner-htext-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: 24px;
+    color: #242E34;
+}
+
+.university-banner-stext-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: 1rem;
+    color: #242E34;
+}
+
+.course-header-container-m {
+    width: 85%;
+    height: 3.75rem;
+    margin: 2rem auto;
+    display: flex;
+}
+
+.course-header-left-m {
+    width: 67.5%;
+    height: 100%;
+    text-align: left;
+    display: flex; 
+    flex-direction: column; 
+}
+
+.course-header-right-m {
+    width: 32.5%;
+    height: 100%;
+    text-align: right;
+    display: flex; 
+    flex-direction: column; 
+}
+
+.course-name-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    color: #36454F;
+    line-height: 1.2;
+    align-items: center;
+}
+
+.small-font-m {
+    font-size: 34px; 
+}
+
+.course-name-header-m img {
+    width: clamp(15px, 2vw, 24px);
+    height: clamp(15px, 2vw, 24px);
+    margin-left: .1rem;
+}
+
+.course-name-subheader-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: 15px;
+    color: #36454F;
+}
+
+.percentage-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; 
+    font-size: clamp(35px, 4vw, 4rem);
+    color: #36454F;
+}
+
+.percentage-subheader-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 450; 
+    font-size: clamp(10px, 1.6vw, .9rem);
+    color: #36454F;
+}
+
+.popular-tags-container-m {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0 auto; 
+}
+
+.popular-tags-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: 13px;
+    color: #36454F;
+    margin-bottom: 0.5rem; 
+    text-align: center; 
+}
+
+.tag-container-m {
+    display: flex;
+    flex-direction: column; 
+    gap: 0.15rem; 
+    align-items: center; 
+}
+
+.course-reviews-header-container-m {
+    width: 85%;
+    display: flex;
+    margin-left: 7.5%;
+    margin-bottom: 1rem;
+    margin-top: 2.25rem;
+}
+
+.course-reviews-header-left-m {
+    width: 40%;
+}
+
+.course-reviews-header-left-m img {
+    width: 75%; 
+    margin-right: .35rem;
+}
+
+.course-reviews-header-right-m {
+    width: 60%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: 15px;
+    color: #36454F;
+    text-align: left;
+}
+
+.course-button-container-m {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    margin-left: 2.5%;
+    
+}
+
+.course-button-container-left-m {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: .4rem;
+}
+
+.course-button-container-right-m {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: .4rem;
+}
+
+.course-reviews-header-m img {
+    height: 40px; 
+    margin-right: .35rem;
+}
+
+.course-button-m {
+    background-color: #36454F; 
+    color: white; 
+    border: none; 
+    width: 10.75rem;
+    height: 47px; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s;
+}
+
+.course-button-text-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 1.2; 
+    display: flex;            
+    align-items: center;      
+    width: fit-content; 
+    margin: 0 auto; 
+}
+
+.course-button-text-m img {
+    height: 15px; 
+    width: 15px; 
+    margin-right: 1rem;
+}
+
+.reviews-container-m {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.metrics-container-m {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 3.25rem;
+    gap: 15px;
+}
+
+.metrics-container-m > div {
+    text-align: center;
+}
+
+.chart1-m, .chart2-m, .chart3-m, .metrics-popular-tags-m {
+    width: 100%;
+}
+
+.chart1-m, .chart2-m {
+    margin-bottom: 15px;
+}
+  
+.gauge-container-m {
+    text-align: center;
+    
+}
+  
+.gauge-label-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(12px, 1.9vw, .9rem);
+    color: #36454F;
+    margin-bottom: .1rem;
+    line-height: 1.2; 
+    display: flex;            
+    align-items: center;      
+    justify-content: center;
+    padding-left: .3rem;
+}
+
+.gauge-label-m img {
+    width: 10px; 
+    height: 10px; 
+    margin-left: .3rem;
+    margin-top: .2rem;
+    opacity: 85%;
+}
+
+.score-header-text-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(12px, 1.9vw, .9rem);
+    color: #628B73;
+}
+
+.score-subheader-green-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: clamp(13px, 1.9vw, 1rem);
+    color: #628B73;
+}
+
+.score-subheader-gray-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: clamp(13px, 1.9vw, 1rem);
+    color: #9A9A9A;
+}
+
+.score-subheader-red-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: clamp(13px, 1.9vw, 1rem);
+    color: #A89092;
+}
+
+.no-reviews-container-m {
+    align-items: center; 
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto; 
+    text-align: center;
+}
+
+.course-no-reviews-button-container-m {
+    align-items: center; 
+    text-align: center;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto; 
+}
+
+.no-reviews-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(15px, 1.75vw, 1.8rem);
+    color: #36454F;
+    margin-top: 3.5rem;
+}
+
+.no-reviews-subheader-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: clamp(12px, 1.25vw, 1.25rem);
+    color: #36454F;
+    margin-bottom: 2rem;
+    margin-top: .5rem;
+}
+
+.load-more-container-m {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+  
+.load-more-button-m {
+    background-color: #36454F;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-more-button-m:active {
+    background-color: #003f7f;
+    transform: scale(0.98);
+}
+
+.filter-dropdown-m {
+    width: 8.5rem;
+    position: absolute;
+    background-color: #ffffff;
+    padding-top: 1.2rem;
+    padding-bottom: 1.35rem;
+    padding-right: 1rem;
+    padding-left: 1.25rem;
+    margin-top: 7.55rem;
+    z-index: 1;
+    text-align: left;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.filter-dropdown-m label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+    color: #36454F;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.filter-dropdown-m select {
+    width: 8rem;
+    padding: 5px;
+    margin-top: .5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    color: #36454F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-dropdown-m select option {
+    font-size: 0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #36454F;
+    padding: 0.5rem;
+}
+
+.popup-message-m {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    animation: fadeInOut 3s forwards;
+}
+  
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.tooltip-m {
+    position: relative;
+    display: inline-block;
+}
+  
+.tooltip-m .tooltip-text-m {
+    visibility: hidden;
+    width: 120px; 
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 65%; 
+    left: 50%;
+    margin-left: -60px; 
+    opacity: 0; 
+    transition: opacity 0.3s;
+}
+
+.tooltip-score-m {
+    position: relative;
+    display: inline-block;
+}
+  
+.tooltip-score-m .tooltip-text-score-m {
+    visibility: hidden;
+    width: 120px; 
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-size: clamp(0.6rem, 1vw, 0.7rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    padding: 5px 5px 5px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%; 
+    left: 50%;
+    margin-left: -120px; 
+    opacity: 0; 
+    transition: opacity 0.3s;
+}
+
+.divider-line-m {
+    width: 100%;
+    height: 4px;
+    background-color: #dfdfdf;
+    margin: 1.25rem auto;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 390px) {
+    .course-name-header-m {
+        font-size: 38px; 
+    }
+    .percentage-subheader-m {
+        font-size: 9px;
+    }
+    .course-name-header-m img {
+        margin-left: .15rem;
+    }
+    .small-font-m {
+        font-size: 32px;
+    }
+    .course-button-m {
+        width: 10rem;
+    }
+}

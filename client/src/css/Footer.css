@@ -1,0 +1,200 @@
+.footer {
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%; 
+    background-color: #f7f7f7;
+}
+
+.footer-left {
+    width: 30%;
+    max-width: 40rem;
+    height: 200px;
+    box-sizing: border-box;
+    display: flex; 
+    align-items: center; 
+}
+
+.footer-middle {
+    width: 40%;
+    max-width: 40rem;
+    height: 200px;
+    box-sizing: border-box;
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.footer-right {
+    width: 30%;
+    max-width: 40rem;
+    height: 200px;
+    box-sizing: border-box;
+    display: flex; 
+    align-items: center; 
+    padding-right: 2.5%;
+}
+
+.footer-icon {
+    width: 35px; 
+    height: 35px; 
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.footer-left-container {
+    margin-left: 10%;
+    text-align: left;
+}
+
+.footer-left-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(15px, 1.2vw, 18px);
+    color: #36454F;
+    margin-bottom: .8rem;
+}
+
+.footer-left-subheader {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; 
+    font-size: clamp(8px, .8vw, 12px);
+    color: #242E34;
+    margin-bottom: .8rem;
+}
+
+.footer-left-contact {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: clamp(8px, .9vw, 13px);
+    color: #242E34;
+    line-height: 1.2; 
+    display: flex;            
+    align-items: center;      
+}
+
+.footer-left-contact img {
+    width: clamp(14px, 2vw, 15px);
+    height: clamp(14px, 2vw, 15px);
+    margin-right: .7rem;
+}
+
+.footer-right-container {
+    margin-left: 10%;
+    text-align: left;
+}
+
+.footer-right-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(15px, 1.2vw, 18px);
+    color: #36454F;
+    margin-bottom: .8rem;
+    margin-top: .3rem;
+}
+
+.footer-right-subheader {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; 
+    font-size: clamp(8px, .8vw, 12px);
+    color: #242E34;
+    margin-bottom: .8rem;
+}
+
+.footer-input-container {
+    position: relative; 
+    width: 85%; 
+    max-width: 35rem;
+}
+
+.footer-right-input {
+    width: 95%; 
+    min-width: 50px; 
+    max-width: 35rem;
+    height: 15px; 
+    padding-left: 1rem;
+    padding-right: clamp(2rem, 3vw, 4rem);
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #36454F;
+    font-size: 0.7rem;
+    background-color: #ECECEC;
+    margin-top: 0.2rem;
+}
+
+.send-icon {
+    position: absolute; 
+    right: -2.5rem; 
+    top: 50%; 
+    transform: translateY(-50%);
+    width: clamp(14px, 2vw, 18px);
+    height: clamp(14px, 2vw, 18px);
+    cursor: pointer; 
+}
+
+.footer-right-input::placeholder {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: clamp(5px, .65rem, .65rem);
+}
+
+.popup-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    animation: fadeInOut 3s forwards;
+  }
+  
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Dynamic styling for position of send icon in the feedback input box. Find a better way to do this in the future */
+
+@media (max-width: 1650px) {
+    .send-icon {
+        margin-right: .5rem; 
+    }
+}
+
+@media (max-width: 1200px) {
+    .send-icon {
+        margin-right: 1rem; 
+    }
+}
+
+@media (max-width: 850px) {
+    .footer-right-input {
+        width: 70%; 
+        max-width: 100%; 
+        padding-right: 2.5rem; 
+        font-size: 0.6rem; 
+    }
+    .send-icon {
+        margin-right: 3rem; 
+    }
+}
+
+@media (max-width: 750px) {
+    .send-icon {
+        margin-right: 2.25rem; 
+    }
+}
+
+@media (max-width: 650px) {
+    .send-icon {
+        margin-right: 1.5rem; 
+    }
+}

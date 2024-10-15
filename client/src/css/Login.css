@@ -1,0 +1,167 @@
+.login-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+}
+
+.login-form {
+    width: 21rem;
+    height: 29rem;
+    background-color: #36454F;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.signup-form {
+    width: 21rem;
+    height: 29rem;
+    background-color: #ffffff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.login-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: clamp(1.5rem, 1.75vw, 1.8rem);
+    color: #ffffff;
+    margin-top: 3rem;
+    padding-left: 2rem;
+}
+
+.login-subheader {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: clamp(.6rem, .9vw, .9rem);
+    color: #ffffff;
+    padding-left: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.login-input {
+    width: 75%; 
+    height: 2.5rem;
+    padding-left: .8rem;
+    padding-right: .4rem;
+    margin-left: 2rem;
+    border-radius: 0.2rem;
+    border: 1px solid #ccc; 
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 0 0 0.01em #d7d7d7 inset, 
+                0 0 0.2rem rgba(0, 0, 0, 0.2); 
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; 
+    margin-top: .4rem;
+    display: flex; 
+    align-items: center; 
+    outline: none;
+}
+
+.password-input {
+    font-size: 1rem; 
+}
+
+.login-input::placeholder {
+    color: #99A5AD; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(.6rem, 2vw, .7rem);
+    font-weight: 400; 
+    text-align: left;
+}
+
+.login-input:focus::placeholder {
+    color: transparent; 
+}
+
+.login-input-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    font-size: clamp(.6rem, .9vw, .9rem);
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+    text-align: left;
+    padding-left: 2rem;
+    margin-top: 1rem;
+}
+
+.login-button {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    width: 75%;
+    height: 3rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-button:hover {
+    background-color: #ebebeb;
+}
+
+.login-button-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650;
+    font-size: 13px;
+    color: #36454F;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.login-logo {
+    height: 40px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+}
+
+.login-signup-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 450; 
+    font-size: clamp(1.3rem, 1.5vw, 1.5rem);
+    color: #36454F;
+    margin-bottom: 2rem;
+}
+
+.login-signup-button {
+    background-color: #36454F;
+    border: none;
+    color: #f7f7f7;
+    padding: 0.65rem 1rem;
+    font-size: .75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 18px;
+    transition: background-color 0.3s;
+    margin-bottom: 2rem;
+    
+}
+
+.login-signup-button:hover {
+    background-color: #242E34;
+}
+
+.login-error {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.6rem, .9vw, .9rem);
+    color: #C53E3E;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    padding-right: 2rem;
+}

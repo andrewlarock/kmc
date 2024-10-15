@@ -1,0 +1,32 @@
+.bookmark-container {
+    display: flex;
+    align-items: center; 
+    max-width: 13rem;
+}
+
+.bookmark-info {
+    display: flex;
+    flex-direction: column; 
+    margin-right: 10px; 
+}
+
+.bookmark-course {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: clamp(10px, 1.5vw, 1.1rem);
+    color: #36454F;
+}
+
+.bookmark-course img {
+    width: clamp(8px, 1vw, 12px);
+    height: clamp(8px, 1vw, 12px);
+    margin-left: .3rem;
+}
+
+.bookmark-university {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 450; 
+    font-size: clamp(8px, 1vw, .8rem);
+    color: #36454F;
+}
+

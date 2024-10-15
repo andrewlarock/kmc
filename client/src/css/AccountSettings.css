@@ -1,0 +1,197 @@
+.settings-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.settings-container {
+    width: clamp(28rem, 65%, 60rem);
+    min-height: 40rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.settings-header {
+    height: 5rem;
+    background-color: #36454F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.settings-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 1.75vw, 1.5rem);
+    color: #ffffff;
+    margin: 0;
+}
+
+.settings-header p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: clamp(.6rem, .9vw, .7rem);
+    color: #ffffff;
+    margin: 0;
+}
+
+.settings-content {
+    display: flex;
+    flex: 1;
+}
+
+.settings-left {
+    width: 25%;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    box-sizing: border-box;
+    padding-top: 1.75rem;
+}
+
+.settings-left-option {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: clamp(10px, 1.5vw, 1.1rem);
+    color: #36454F;
+    line-height: 1.2; 
+    display: flex;            
+    align-items: center;      
+    margin-bottom: 1rem;
+    padding-left: 15%;
+}
+
+.settings-left-option img {
+    width: clamp(10px, 1.75vw, 18px);
+    height: clamp(10px, 1.75vw, 18px);
+    margin-right: clamp(.3rem, .8vw, .7rem);
+}
+
+.settings-right {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    text-align: left;
+    padding-left: 2.5rem;
+    flex-direction: column; 
+}
+
+.settings-right-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(10px, 1.75vw, 1.1rem);
+    color: #36454F;
+    margin-top: 1.75rem;
+}
+
+.settings-inputs-container {
+    display: flex;
+    align-items: flex-start; 
+    margin-top: .5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem; 
+}
+
+.input-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.6rem, .85vw, .85rem);
+    color: #36454F;
+    margin-bottom: .3rem;
+}
+
+.input-field {
+    width: clamp(9rem, 15vw, 15rem);
+    height: 2rem;
+    border-radius: 4px;
+    border: 1px solid #ccc; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(.6rem, .85vw, .85rem);
+    box-shadow: 0 0 0 0.01em #d7d7d7 inset, 
+                0 0 0.2rem rgba(0, 0, 0, 0.2); 
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; 
+    padding-left: .5rem;
+}
+
+.signout-button {
+    background-color: #36454F;
+    border: none;
+    color: #f7f7f7;
+    width: clamp(5rem, 12vw, 12rem);
+    height: 2.25rem;
+    font-size: clamp(.6rem, .85vw, .85rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    margin-top: 3rem;
+}
+
+.signout-button:hover {
+    background-color: #242E34;
+}
+
+.delete-button {
+    background-color: #C53E3E;
+    border: none;
+    color: #f7f7f7;
+    width: clamp(5rem, 12vw, 12rem);
+    height: 2.25rem;
+    font-size: clamp(.4rem, .85vw, .85rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    margin-left: 1rem;
+}
+
+.delete-button:hover {
+    background-color: #e42020;
+}
+
+.error-message {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.7rem, .9vw, .9rem);
+    color: #C53E3E;
+    margin-top: 1rem;
+}
+
+.success-message {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.7rem, .9vw, .9rem);
+    color: #628B73;
+    margin-top: 1rem;
+}
+
+.bookmark-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.75rem;
+}
+
+.no-bookmarks {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: clamp(10px, 1.5vw, 1.1rem);
+    color: #36454F;
+    line-height: 1.2; 
+    margin-top: .4rem;
+}

@@ -1,0 +1,196 @@
+.signup-container-m {
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.signup-login-form-m {
+    width: 100%;
+    height: 25rem;
+    background-color: #ffffff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.signup-signup-form-m {
+    width: 100%;
+    height: 38rem;
+    background-color: #36454F;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    padding-top: 2rem;
+}
+
+.signup-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: 1.6rem;
+    color: #ffffff;
+    padding-left: 2rem;
+}
+
+.signup-subheader-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: .7rem;
+    color: #ffffff;
+    padding-left: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.signup-input-m {
+    width: 75%; 
+    height: 2.5rem;
+    padding-left: .8rem;
+    padding-right: .4rem;
+    margin-left: 2rem;
+    border-radius: 0.2rem;
+    border: 1px solid #ccc; 
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 0 0 0.01em #d7d7d7 inset, 
+                0 0 0.2rem rgba(0, 0, 0, 0.2); 
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; 
+    margin-top: .4rem;
+    display: flex; 
+    align-items: center; 
+    outline: none;
+}
+
+.signup-password-input-m {
+    font-size: 1rem; 
+}
+
+.signup-input-m::placeholder {
+    color: #99A5AD; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(.6rem, 2vw, .7rem);
+    font-weight: 400; 
+    text-align: left;
+}
+
+.signup-input-m:focus::placeholder {
+    color: transparent; 
+}
+
+.signup-input-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    font-size: .8rem;
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+    text-align: left;
+    padding-left: 2rem;
+    margin-top: 1rem;
+}
+
+.signup-button-m {
+    background-color: #ffffff;
+    color: #36454F;
+    border: none;
+    width: 75%;
+    height: 3rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signup-button-text-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #36454F;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.signup-logo-m {
+    height: 40px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+}
+
+.signup-login-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 450; 
+    font-size: clamp(1.3rem, 1.5vw, 1.5rem);
+    color: #36454F;
+    margin-bottom: 2rem;
+}
+
+.signup-login-button-m {
+    background-color: #36454F;
+    border: none;
+    color: #ffffff;
+    padding: 0.65rem 1rem;
+    font-size: .75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 18px;
+    transition: background-color 0.3s;
+    margin-bottom: 2rem;
+}
+
+.password-feedback-m {
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: .6rem;
+    color: #ffffff;
+    line-height: 1;
+    margin-right: 2rem;
+    margin-bottom: -.4rem;
+    padding-left: 2rem;
+}
+
+.valid-m {
+    color: #628B73;
+}
+
+.invalid-m {
+    color: #a66166;
+}
+
+.signup-error-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: .7rem;
+    color: #C53E3E;
+    margin-right: 2rem;
+    padding-left: 2rem;
+    margin-top: 1rem;
+}
+
+.signup-privacy-container-m {
+    padding-top: .75rem;
+    width: 75%;
+    margin-left: 2rem;
+}
+
+.signup-privacy-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: .575rem;
+    color: #ffffff;
+    margin-bottom: 0.2rem;
+    text-align: left;
+    margin-top: 1rem;
+    line-height: 1.1;
+}

@@ -1,0 +1,213 @@
+.review-m {
+    width: 90%;
+    background-color: #D3DDD7;
+    border-radius: 7px;
+}
+
+.review-very-top-m {
+    width: 100%;
+    text-align: right;
+    display: flex;
+}
+
+.review-very-top-left-m {
+    width: 75%;
+}
+
+.review-very-top-right-m {
+    width: 25%;
+}
+
+.review-top-m {
+    width: 100%;
+    text-align: left;
+}
+
+.review-middle-m {
+    width: 85%;
+    margin-left: 7.5%;
+    text-align: left;
+    padding-top: .5rem;
+    padding-bottom: 1.25rem;
+}
+
+.review-bottom-m {
+    display: flex;
+    gap: .9rem;
+    padding-bottom: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.review-difficulty-box-m {
+    width: 25%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-workload-box-m {
+    width: 25%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-enjoyment-box-m {
+    width: 25%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-course-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: 21px;
+    color: #242E34;
+    line-height: 1.15; 
+    display: flex;            
+    align-items: center;      
+    margin-top: 1.25rem;
+    margin-left: 1.75rem;
+    margin-bottom: .1rem;
+}
+
+.review-course-m img {
+    width: 23px; 
+    height: 23px; 
+    margin-right: .5rem;
+}
+
+.review-top-text-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 450; 
+    font-size: 16px;
+    color: #242E34;
+    margin-top: .4rem;
+    margin-left: 1.75rem;
+}
+
+.semi-bold-m {
+    font-weight: 600;
+}
+
+.professor-name-m {
+    font-size: 16px; 
+}
+
+.professor-name-small-m {
+    font-size: 14px; 
+}
+
+.review-timestamp-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: 12px;
+    color: #242E34;
+    padding-right: 1.5rem;
+    margin-top: 1.4rem;
+}
+
+.review-review-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: 12.5px;
+    color: #242E34;
+    margin-top: .45rem;
+    line-height: 1.45;
+}
+
+.review-box-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: 12px;
+    color: #242E34;
+}
+
+.review-box-score-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: 44px;
+    color: #242E34;
+}
+
+.score-out-of-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 450; 
+    font-size: 8px;
+    color: #242E34;
+}
+
+.review-score-green-m {
+    width: 100%;
+    height: 1.1rem;
+    background-color: #628B73;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-score-gray-m {
+    width: 100%;
+    height: 1.1rem;
+    background-color: #9A9A9A;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-score-red-m {
+    width: 100%;
+    height: 1.1rem;
+    background-color: #A89092;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-score-text-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: 8.5px;
+    color: #242E34;
+}
+
+.review-tags-container-m {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: .25rem;
+    padding-top: .8rem;
+}
+
+.review-tags-box-m {
+    height: 100%;
+    margin-left: 1.75rem;
+    margin-right: 1.75rem;
+}
+
+.flag-box-m {
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.flag-box-m img {
+    width: 17px;
+    height: 17px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}

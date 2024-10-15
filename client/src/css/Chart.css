@@ -1,0 +1,9 @@
+.gauge {
+    width: clamp(7.5rem, 15vw, 13rem);
+    height: clamp(3.75rem, 15vw, 6.5rem);
+}
+
+.gauge-m {
+    width: 10rem;
+    height: 5rem;
+}

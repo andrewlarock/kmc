@@ -1,0 +1,193 @@
+.settings-wrapper-m {
+    display: flex;
+    justify-content: center;
+}
+
+.settings-container-m {
+    width: 90%;
+    min-height: 40rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.settings-header-m {
+    height: 5.5rem;
+    background-color: #36454F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.settings-header-m h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 1.75vw, 1.5rem);
+    color: #ffffff;
+    margin: 0;
+}
+
+.settings-header-m p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: .65rem;
+    color: #ffffff;
+    margin: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.settings-content-m {
+    display: flex;
+    flex: 1;
+}
+
+.settings-left-m {
+    width: 32.5%;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    box-sizing: border-box;
+    padding-top: 1.75rem;
+}
+
+.settings-left-option-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #36454F;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-left: 15%;
+}
+
+.settings-left-option-m img {
+    width: clamp(10px, 1.75vw, 18px);
+    height: clamp(10px, 1.75vw, 18px);
+    margin-right: clamp(.3rem, .8vw, .7rem);
+}
+
+.settings-right-m {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    text-align: left;
+    padding-left: 1.75rem;
+    flex-direction: column;
+}
+
+.settings-right-header-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #36454F;
+    margin-top: 1.75rem;
+}
+
+.settings-inputs-container-m {
+    display: flex;
+    align-items: flex-start;
+    margin-top: .4rem;
+}
+
+.input-group-m {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.input-label-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: .7rem;
+    color: #36454F;
+    margin-bottom: .5rem;
+}
+
+.input-field-m {
+    width: 11rem;
+    height: 2rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .7rem;
+    box-shadow: 0 0 0 0.01em #d7d7d7 inset,
+                0 0 0.2rem rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    padding-left: .5rem;
+    margin-bottom: -.25rem;
+}
+
+.signout-button-m {
+    background-color: #36454F;
+    border: none;
+    color: #f7f7f7;
+    width: 11rem;
+    height: 2.25rem;
+    font-size: .7rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    margin-top: 2.5rem;
+}
+
+.delete-button-m {
+    background-color: #C53E3E;
+    border: none;
+    color: #f7f7f7;
+    width: 11rem;
+    height: 2.25rem;
+    font-size: .7rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+
+.error-message-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.7rem, .9vw, .9rem);
+    color: #C53E3E;
+    margin-top: 1rem;
+}
+
+.success-message-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.7rem, .9vw, .9rem);
+    color: #628B73;
+    margin-top: 1rem;
+}
+
+.bookmark-list-m {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.no-bookmarks-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(10px, 1.5vw, 1.1rem);
+    color: #36454F;
+    line-height: 1.2;
+    margin-top: .4rem;
+    margin-right: 5%;
+}

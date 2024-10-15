@@ -1,0 +1,21 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+}
+
+.not-found-container img {
+    max-width: 200px; 
+    margin-bottom: 20px; 
+}
+
+.not-found-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(15px, 1.2vw, 20px);
+    color: #36454F;
+}

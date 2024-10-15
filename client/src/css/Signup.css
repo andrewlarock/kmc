@@ -1,0 +1,219 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+}
+
+.signup-login-form {
+    width: 21rem;
+    height: 40rem;
+    background-color: #36454F;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.signup-signup-form {
+    width: 21rem;
+    height: 40rem;
+    background-color: #ffffff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: right;
+}
+
+.signup-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: clamp(1.5rem, 1.75vw, 1.8rem);
+    color: #36454F;
+    margin-top: 3rem;
+    padding-right: 2rem;
+}
+
+.signup-subheader {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: clamp(.6rem, .9vw, .9rem);
+    color: #36454F;
+    padding-right: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.signup-input {
+    width: 75%;
+    height: 2.5rem;
+    background-color: #36454F;
+    padding-left: .8rem;
+    padding-right: .4rem;
+    margin-left: auto;
+    margin-right: 2rem;
+    color: white;
+    border-radius: 0.2rem;
+    border: 1px solid #ccc; 
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 0 0 0.01em #d7d7d7 inset, 
+                0 0 0.2rem rgba(0, 0, 0, 0.2); 
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; 
+    margin-top: .4rem;
+    display: flex; 
+    align-items: center; 
+    outline: none;
+}
+
+.signup-password-input {
+    font-size: 1rem; 
+}
+
+.signup-input::placeholder {
+    color: #99A5AD; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(.6rem, 2vw, .7rem);
+    font-weight: 400; 
+    text-align: left;
+}
+
+.signup-input:focus::placeholder {
+    color: transparent; 
+}
+
+.signup-input-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+    font-size: clamp(.6rem, .9vw, .9rem);
+    color: #36454F;
+    margin-bottom: 0.2rem;
+    text-align: right;
+    padding-right: 2rem;
+    margin-top: 1rem;
+}
+
+.signup-privacy-container {
+    padding-top: .75rem;
+    width: 75%;
+    margin-left: 15%;
+}
+
+@media (max-width: 650px) {
+    .signup-privacy-container {
+        margin-left: 12.5%;
+    }
+}
+
+@media (max-width: 550px) {
+    .signup-privacy-container {
+        margin-left: 11%;
+    }
+}
+
+.signup-privacy-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.5rem, .9vw, .525rem);
+    color: #36454F;
+    margin-bottom: 0.2rem;
+    text-align: right;
+    margin-top: 1rem;
+    line-height: 1.1;
+}
+
+.signup-button {
+    background-color: #36454F;
+    color: white;
+    border: none;
+    width: 75%;
+    height: 3rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signup-button:hover {
+    background-color: #242E34;
+}
+
+.signup-button-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.signup-logo {
+    height: 40px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+}
+
+.signup-login-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 450; 
+    font-size: clamp(1.3rem, 1.5vw, 1.5rem);
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.signup-login-button {
+    background-color: #ffffff;
+    border: none;
+    color: #36454F;
+    padding: 0.65rem 1rem;
+    font-size: .75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 18px;
+    transition: background-color 0.3s;
+    margin-bottom: 2rem;
+    
+}
+
+.signup-login-button:hover {
+    background-color: #ebebeb;
+}
+
+.password-feedback {
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: clamp(.5rem, .6vw, .6rem);
+    color: #36454F;
+    line-height: 1;
+    margin-right: 2rem;
+    margin-bottom: -.4rem;
+}
+
+.valid {
+    color: #628B73;
+}
+
+.invalid {
+    color: #a66166;
+}
+
+.signup-error {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.55rem, .8vw, .7rem);
+    color: #C53E3E;
+    margin-right: 2rem;
+    padding-left: 2rem;
+    margin-top: 1rem;
+}

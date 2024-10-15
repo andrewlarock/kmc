@@ -1,0 +1,33 @@
+.guidelines {
+    width: 55%;
+    margin-left: 10%;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.guidelines-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #242E34;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.guidelines-subheader {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #242E34;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+}
+
+.guidelines-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #242E34;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Montserrat:wght@600&display=swap');
+
+.home-container-m {
+    width: 100%;
+    height: 70vh;
+    min-height: 500px; 
+    max-height: 575px; 
+    background-image: url('.././images/bg.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    position: relative; 
+}
+
+.text-container-m {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%); 
+    text-align: center; 
+    width: 90%;
+}
+
+@media (min-width: 400px) {
+    .text-container-m {
+        top: 22.5%;
+    }
+}
+
+.header-text-m {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: 2rem; 
+    color: #242E34;
+    line-height: 1.2; 
+    margin-bottom: 1rem;
+}
+
+.subheader-text-m {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400; 
+    font-size: .75rem; 
+    color: #242E34;
+    line-height: 1.3; 
+    margin-bottom: 3.5rem;
+}
+
+.search-container-m {
+    position: relative; 
+    width: fit-content; 
+    margin: 0 auto; 
+}
+
+.search-bar-m {
+    width: 250px; 
+    height: 65px; 
+    padding: 0.5rem 1rem; 
+    padding-left: 75px; 
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 50px; 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 500;
+    color: #36454F;
+    font-size: 1rem; 
+    background-color: white; 
+
+    background-image: url('.././images/search.png'); 
+    background-repeat: no-repeat;
+    background-position: 37px center; 
+    background-size: 15px 15px; 
+}
+
+.search-bar-m::placeholder {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1rem; 
+}
+
+.search-bar-m:focus {
+    outline: none; 
+}
+
+.search-bar-m.no-shadow {
+    box-shadow: none; 
+}
+
+.dropdown-container-m {
+    position: relative; 
+    width: 341px;
+}
+
+.white-space-m {
+    background-color: #ffffff; 
+    position: absolute; 
+    width: 99.75%; 
+    margin: -3rem 0 0 0;
+    z-index: -1;
+    padding: 3.5rem 0 0 0;
+    border-left: 1px solid #ccc; 
+    border-right: 1px solid #ccc; 
+    
+}
+
+.dropdown-m {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #ffffff;
+    
+}
+  
+.dropdown-item-m {
+    padding: 0.75rem; 
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+  
+.dropdown-item-m:hover {
+    background-color: #f0f0f0;
+}
+
+.university-name-m {
+    font-size: 1rem; 
+    font-weight: 600; 
+    color: #36454F; 
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.university-location-m {
+    font-size: 0.8rem; 
+    font-weight: 400; 
+    color: #777; 
+    margin-top: 0.2rem; 
+    font-family: 'Montserrat', sans-serif; 
+}
+  

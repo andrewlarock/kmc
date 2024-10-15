@@ -1,0 +1,480 @@
+.university-container {
+    background-color: #f7f7f7; 
+}
+
+.university-banner {
+    width: 100%;
+    height: 120px; 
+    background-image: url('./images/schoolbg-cropped.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    position: relative; 
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.5); 
+}
+
+.university-banner-text {
+    line-height: 1.2;
+}
+
+.university-banner-htext {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(15px, 4vw, 2rem);
+    color: #242E34;
+}
+
+.university-banner-stext {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: 1rem;
+    color: #242E34;
+}
+
+.course-header-container {
+    width: clamp(26rem, 60vw, 53rem);
+    height: clamp(4rem, 10vw, 8rem);
+    margin: 2rem auto;
+    display: flex;
+}
+
+.course-header-left {
+    width: 70%;
+    height: 100%;
+    text-align: left;
+    display: flex; 
+    flex-direction: column; 
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.course-header-right {
+    width: 30%;
+    height: 100%;
+    text-align: right;
+    display: flex; 
+    flex-direction: column; 
+    padding-top: 1rem;
+}
+
+.course-name-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(45px, 4vw, 4rem);
+    color: #36454F;
+    line-height: 1.2;
+    align-items: center;
+}
+
+.course-name-header img {
+    width: clamp(15px, 2vw, 24px);
+    height: clamp(15px, 2vw, 24px);
+    margin-left: .3rem;
+}
+
+.course-name-subheader {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: clamp(15px, 3vw, 1.5rem);
+    color: #36454F;
+}
+
+.percentage-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: clamp(35px, 4vw, 4rem);
+    color: #36454F;
+}
+
+.percentage-subheader {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: clamp(10px, 1.6vw, .9rem);
+    color: #36454F;
+}
+
+.popular-tags-container {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 1rem; 
+    
+    width: clamp(30rem, 60vw, 53rem);
+    margin: 0 auto; 
+    margin-top: -.5rem;
+}
+
+.popular-tags-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(12px, 1.9vw, .9rem);
+    color: #36454F;
+    margin-right: 10px; 
+}
+
+.tag-container {
+    display: flex;
+    gap: 10px; 
+    flex-wrap: wrap; 
+}
+
+.coursepage-reviews-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: clamp(10px, 2vw, 16px);
+    color: #36454F;
+    line-height: 1.2; 
+    display: flex;            
+    align-items: center;      
+    width: fit-content; 
+    margin: 0 auto; 
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+}
+
+.coursepage-reviews-header img {
+    height: 40px; 
+    margin-right: .35rem;
+}
+
+.course-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.course-button-container-left {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+}
+
+.course-button-container-right {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.course-reviews-header img {
+    height: 40px; 
+    margin-right: .35rem;
+}
+
+.course-button {
+    background-color: #36454F; 
+    color: white; 
+    border: none; 
+    width: clamp(12rem, 20vw, 14rem);
+    height: 48px; 
+    border-radius: 25px; 
+    cursor: pointer; 
+    margin-top: 1rem;
+    margin-right: .5rem;
+    margin-left: .5rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s;
+}
+
+.course-button-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 1.2; 
+    display: flex;            
+    align-items: center;      
+    width: fit-content; 
+    margin: 0 auto; 
+}
+
+.course-button-text img {
+    height: 15px; 
+    width: 15px; 
+    margin-right: 1rem;
+}
+
+.course-button:hover {
+    background-color: #242E34;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.gauges-wrapper {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin: 4rem 0;
+    gap: clamp(3rem, 10vw, 6rem);
+}
+  
+.gauge-container {
+    text-align: center;
+}
+  
+.gauge-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(12px, 1.9vw, .9rem);
+    color: #36454F;
+    margin-bottom: .1rem;
+    line-height: 1.2; 
+    display: flex;            
+    align-items: center;      
+    justify-content: center;
+    padding-left: .3rem;
+}
+
+.gauge-label img {
+    width: 12px; 
+    height: 12px; 
+    margin-left: .3rem;
+    margin-top: .2rem;
+    opacity: 85%;
+}
+
+.score-header-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(12px, 1.9vw, .9rem);
+    color: #628B73;
+}
+
+.score-subheader-green {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: clamp(13px, 1.9vw, 1rem);
+    color: #628B73;
+}
+
+.score-subheader-gray {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: clamp(13px, 1.9vw, 1rem);
+    color: #9A9A9A;
+}
+
+.score-subheader-red {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 650; 
+    font-size: clamp(13px, 1.9vw, 1rem);
+    color: #A89092;
+}
+
+.no-reviews-container {
+    align-items: center; 
+    justify-content: center;
+    width: clamp(30rem, 60vw, 53rem);
+    margin: 0 auto; 
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .no-reviews-container {
+        padding-top: .2rem; 
+    }
+}
+
+.course-no-reviews-button-container {
+    align-items: center; 
+    text-align: center;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto; 
+}
+
+.no-reviews-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; 
+    font-size: clamp(15px, 1.75vw, 1.8rem);
+    color: #36454F;
+    margin-top: 3rem;
+}
+
+.no-reviews-subheader {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: clamp(12px, 1.25vw, 1.25rem);
+    color: #36454F;
+    margin-bottom: 2rem;
+}
+
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+  
+.load-more-button {
+    background-color: #36454F;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.load-more-button:hover {
+    background-color: #242E34;
+}
+
+.load-more-button:active {
+    background-color: #003f7f;
+    transform: scale(0.98);
+}
+
+.filter-dropdown {
+    width: clamp(10rem, 16.5vw, 11.75rem);
+    position: absolute;
+    background-color: #ffffff;
+    padding-top: 1.2rem;
+    padding-bottom: 1.35rem;
+    padding-right: 1rem;
+    padding-left: 1.25rem;
+    margin-top: 7.55rem;
+    margin-left: .5rem;
+    z-index: 1;
+    text-align: left;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.filter-dropdown label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: .9rem;
+    color: #36454F;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.filter-dropdown select {
+    width: 10rem;
+    padding: 5px;
+    margin-top: .5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    color: #36454F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-dropdown select option {
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #36454F;
+    padding: 0.5rem;
+}
+
+.filter-dropdown select:hover {
+    background-color: #f1f1f1;
+}
+
+.popup-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    animation: fadeInOut 3s forwards;
+}
+  
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+  
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px; 
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 65%; 
+    left: 50%;
+    margin-left: -60px; 
+    opacity: 0; 
+    transition: opacity 0.3s;
+}
+  
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1; 
+}
+
+.tooltip-score {
+    position: relative;
+    display: inline-block;
+}
+  
+.tooltip-score .tooltip-text-score {
+    visibility: hidden;
+    width: 120px; 
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-size: clamp(0.6rem, 1vw, 0.7rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    padding: 5px 5px 5px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%; 
+    left: 50%;
+    margin-left: -120px; 
+    opacity: 0; 
+    transition: opacity 0.3s;
+}
+  
+.tooltip-score:hover .tooltip-text-score {
+    visibility: visible;
+    opacity: 1; 
+}
