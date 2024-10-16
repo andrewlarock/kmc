@@ -210,6 +210,9 @@ const ReviewForm = () => {
             // Validate the course and get its ID
             const courseId = await validateCourse(universityId, reviewCC, reviewCN);
 
+            // Get the current timestamp in 'YYYY-MM-DD HH:MM:SS' format
+            const currentTimestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
             // Prepare the review data
             const reviewData = {
                 university_id: universityId,
@@ -222,7 +225,8 @@ const ReviewForm = () => {
                 enjoyment: reviewEnjoyment,
                 recommended: reviewRecommended,
                 review: reviewReview,
-                tags: selectedTags
+                tags: selectedTags,
+                timestamp: currentTimestamp
             };
 
             // Submit the review
