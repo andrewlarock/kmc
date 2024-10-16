@@ -38,7 +38,7 @@ const initDb = async () => {
     }
 
     // Now connect to 'kmc' database to create the 'users' table
-    const pool = new Pool({ // manages a pool of connections to the PostgreSQL database. this allows multiple connections and queries to be handled efficiently
+    const kmcPool = new Pool({ // manages a pool of connections to the PostgreSQL database. this allows multiple connections and queries to be handled efficiently
       user: process.env.DB_USER,
       host: process.env.DB_HOST,
       database: process.env.DB_DATABASE,
