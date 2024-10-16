@@ -15,8 +15,9 @@ app.use(cookieParser()); // Enable cookie parsing
 
 // CORS configuration to allow specific origin and credentials
 const corsOptions = {
-  origin: 'https://bespoke-kataifi-e2f4d5.netlify.app/' || 'http://localhost:3000',  // Front-end URL
-  credentials: true,                // Allow credentials (cookies)
+  origin: 'https://bespoke-kataifi-e2f4d5.netlify.app', // front-end URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  credentials: true, // If you're using cookies for authentication
 };
 
 app.use(cors(corsOptions));  // Apply CORS middleware with options
