@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
   // Function to check if the user is authenticated
   const checkAuthentication = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/auth/check-token', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
         withCredentials: true
       });
 
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
   // Function to refresh the token
   const refreshToken = async () => {
     try {
-      await axios.post('http://localhost:5000/auth/refresh-token', {}, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/refresh-token`, {}, {
         withCredentials: true
       });
     } catch (error) {

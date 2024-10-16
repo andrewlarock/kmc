@@ -95,7 +95,7 @@ const SignupPage = () => {
         }
 
         try {
-            await axios.post('http://localhost:5000/signup', { email, password, name }, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/signup`, { email, password, name }, {
                 withCredentials: true, // This tells axios to include cookies in requests
              });
 

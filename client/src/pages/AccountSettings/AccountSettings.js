@@ -41,7 +41,7 @@ const AccountSettings = () => {
     // Function to check if the user loses authentication during any process
     const checkAuthentication = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/auth/check-token', { withCredentials: true });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, { withCredentials: true });
             return response.data.isAuthenticated;
         } catch (err) {
             setError('Failed to check authentication status.');
@@ -52,7 +52,7 @@ const AccountSettings = () => {
     // Function to handle user logout
     const handleLogout = async () => {
         try {
-            await axios.post('http://localhost:5000/logout', {}, { withCredentials: true });
+            await axios.post(`${process.env.REACT_APP_API_URL}/logout`, {}, { withCredentials: true });
             setIsAuthenticated(false); // Update authentication state
             setUserName(''); // Clear username from context
             setUserEmail(''); // Clear email from context
@@ -76,7 +76,7 @@ const AccountSettings = () => {
         const confirmDelete = window.confirm('Are you sure you want to delete your account? This action is irreversible.');
         if (confirmDelete) {
             try {
-                await axios.delete('http://localhost:5000/account/delete', { withCredentials: true });
+                await axios.delete(`${process.env.REACT_APP_API_URL}/account/delete`, { withCredentials: true });
                 setIsAuthenticated(false);
                 setUserName('');
                 setUserEmail('');
@@ -90,7 +90,7 @@ const AccountSettings = () => {
 
     const fetchBookmarks = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/bookmark', { withCredentials: true });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/bookmark`, { withCredentials: true });
             setBookmarks(response.data); // Set bookmarks from the API response
         } catch (error) {
             console.error('Error fetching bookmarks:', error);

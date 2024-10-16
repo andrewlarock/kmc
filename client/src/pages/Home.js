@@ -104,7 +104,7 @@ const Home = () => {
     setDropdownVisible(false); // Hide dropdown after selection
 
     try {
-      const response = await axios.post('http://localhost:5000/universities', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/universities`, {
         name: university.name,
         location: university.location
       });

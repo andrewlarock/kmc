@@ -57,7 +57,7 @@ const CoursePage = () => {
   useEffect(() => {
     const fetchReviews = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/reviews'); // Adjust the URL as necessary
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/reviews`); // Adjust the URL as necessary
             // Filter reviews based on university_id and sort by timestamp
             const filteredReviews = response.data
                 .filter(review => review.university_id == id) // Match university_id with the id from URL
@@ -123,7 +123,7 @@ const CoursePage = () => {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/courses/${courseId}`); // Use the correct backend URL
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/courses/${courseId}`); // Use the correct backend URL
         
         if (response.status === 204) { // Handles course not being found
           console.error('Course not found');
@@ -148,7 +148,7 @@ const CoursePage = () => {
   useEffect(() => {
     const fetchUniversity = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/universities/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/universities/${id}`);
         setUniversity(response.data);
       } catch (error) {
         console.error('Error fetching university data:', error);
@@ -162,7 +162,7 @@ const CoursePage = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/courses/${courseId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/courses/${courseId}`);
         if (response.data.university_id == id) {
           setCourse(response.data);
         } else {
@@ -194,7 +194,7 @@ const CoursePage = () => {
     }
   
     try {
-      const response = await axios.post('http://localhost:5000/bookmark/add', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/bookmark/add`, {
         universityId: id, // Use id from useParams
         courseId: courseId, // Use courseId from useParams
       }, {

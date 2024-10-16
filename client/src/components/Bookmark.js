@@ -13,7 +13,7 @@ const Bookmark = ({ university_id, course_id, fetchBookmarks}) => {
     useEffect(() => {
         const fetchUniversity = async () => {
           try {
-            const response = await axios.get(`http://localhost:5000/universities/${university_id}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/universities/${university_id}`);
             setUniversity(response.data.name);
           } catch (error) {
             console.error('Error fetching university data:', error);
@@ -26,7 +26,7 @@ const Bookmark = ({ university_id, course_id, fetchBookmarks}) => {
     useEffect(() => {
         const fetchCourseDetails = async () => {
             try {
-            const response = await fetch(`http://localhost:5000/courses/${course_id}`); // Use the correct backend URL
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/courses/${course_id}`); // Use the correct backend URL
             
             if (response.status === 204) { // Handles course not being found
                 console.error('Course not found');
@@ -51,7 +51,7 @@ const Bookmark = ({ university_id, course_id, fetchBookmarks}) => {
     const handleBookmark = async (event) => {
         event.stopPropagation(); // Prevent the event from bubbling up
         try {
-          const response = await axios.post('http://localhost:5000/bookmark/add', {
+          const response = await axios.post(`${process.env.REACT_APP_API_URL}/bookmark/add`, {
             universityId: university_id,
             courseId: course_id,
           }, {
