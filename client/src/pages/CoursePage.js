@@ -80,9 +80,13 @@ const CoursePage = () => {
             // Find the 3 most popular tags
             const tagCount = {};
             filteredReviews.forEach(review => {
-              review.tags.forEach(tag => {
-                tagCount[tag] = (tagCount[tag] || 0) + 1; // Count the occurrence of each tag
-              });
+              
+                // Check if tags is a string, and split it into an array if necessary
+                const tagsArray = typeof review.tags === 'string' ? review.tags.replace(/["{}]/g, '').split(',') : review.tags;
+    
+                tagsArray.forEach(tag => {
+                    tagCount[tag.trim()] = (tagCount[tag.trim()] || 0) + 1;
+                });
             });
 
             // Convert tagCount object to an array of [tag, count] and sort by count in descending order
