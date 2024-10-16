@@ -81,7 +81,8 @@ app.post('/login', async (req, res) => {
     // Set token in HTTP-Only cookie
     res.cookie('token', token, {
       httpOnly: true,    // Cannot be accessed via JavaScript (prevents XSS)
-      sameSite: 'Strict',  // Helps prevent CSRF attacks
+      sameSite: 'None',  // Helps prevent CSRF attacks
+      secure: true, // Ensure cookies are only sent over HTTPS
       maxAge: 2 * 60 * 60 * 1000 // 2 hour expiration
     });
 
@@ -110,7 +111,8 @@ app.post('/auth/refresh-token', authenticateToken, (req, res) => {
   // Set the new token as an HTTP-Only cookie
   res.cookie('token', newToken, {
     httpOnly: true,
-    sameSite: 'Strict',
+    sameSite: 'None',
+    secure: true, // Ensure cookies are only sent over HTTPS
     maxAge: 2 * 60 * 60 * 1000 // 2 hours expiration
   });
 
@@ -145,7 +147,8 @@ app.post('/signup', async (req, res) => {
       // Set token as HTTP-Only cookie
       res.cookie('token', token, {
         httpOnly: true,  // Cannot be accessed via JavaScript
-        sameSite: 'Strict',  // Prevents CSRF attacks
+        sameSite: 'None',  // Prevents CSRF attacks
+        secure: true, // Ensure cookies are only sent over HTTPS
         maxAge: 2 * 60 * 60 * 1000 // 1 hour expiration
       });
 
@@ -160,7 +163,8 @@ app.post('/signup', async (req, res) => {
 app.post('/logout', (req, res) => {
   res.clearCookie('token', {
      httpOnly: true,
-     sameSite: 'Strict'
+     sameSite: 'None',
+     secure: true, // Ensure cookies are only sent over HTTPS
   });
   res.status(200).json({ message: 'Logged out successfully' });
 });
@@ -378,7 +382,8 @@ app.put('/account/update-email', authenticateToken, async (req, res) => {
     // Set the new token as an HTTP-Only cookie
     res.cookie('token', newToken, {
       httpOnly: true,  // Cannot be accessed via JavaScript
-      sameSite: 'Strict', // Helps prevent CSRF attacks
+      sameSite: 'None', // Helps prevent CSRF attacks
+      secure: true, // Ensure cookies are only sent over HTTPS
       maxAge: 2 * 60 * 60 * 1000, // 1 hour expiration
     });
 
@@ -446,7 +451,8 @@ app.put('/account/update-name', authenticateToken, async (req, res) => {
     // Set the new token as an HTTP-Only cookie
     res.cookie('token', newToken, {
       httpOnly: true,  // Cannot be accessed via JavaScript
-      sameSite: 'Strict', // Helps prevent CSRF attacks
+      sameSite: 'None', // Helps prevent CSRF attacks
+      secure: true, // Ensure cookies are only sent over HTTPS
       maxAge: 2 * 60 * 60 * 1000, // 1 hour expiration
     });
 
@@ -476,7 +482,8 @@ app.delete('/account/delete', authenticateToken, async (req, res) => {
     // Clear the authentication token cookie after deletion
     res.clearCookie('token', {
       httpOnly: true,
-      sameSite: 'Strict',
+      secure: true, // Ensure cookies are only sent over HTTPS
+      sameSite: 'None',
     });
 
     return res.status(200).json({ message: 'Account deleted successfully.' });
