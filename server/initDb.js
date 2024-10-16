@@ -38,7 +38,7 @@ const initDb = async () => {
     }
 
     // Now connect to 'kmc' database to create the 'users' table
-    const pool = new Pool({ // manages a pool of connections to the PostgreSQL database. this allows multiple connections and queries to be handled efficiently
+    const kmcPool = new Pool({ // manages a pool of connections to the PostgreSQL database. this allows multiple connections and queries to be handled efficiently
       user: process.env.DB_USER,
       host: process.env.DB_HOST,
       database: process.env.DB_DATABASE,
@@ -50,7 +50,7 @@ const initDb = async () => {
     await kmcPool.query(`
         CREATE TABLE IF NOT EXISTS users (
             id SERIAL PRIMARY KEY,
-            email VARCHAR(100) UNIQUE NOT NULL,
+            email VARCHAR(100) UNIQUE,
             password VARCHAR(255) NOT NULL,
             name VARCHAR(255) NOT NULL,
             bookmarks TEXT[] DEFAULT '{}'
@@ -72,7 +72,7 @@ const initDb = async () => {
     await kmcPool.query(`
         CREATE TABLE IF NOT EXISTS courses (
           id SERIAL PRIMARY KEY,
-          university_id INTEGER REFERENCES universities(id) ON DELETE CASCADE,
+          university_id INTEGER,
           code VARCHAR(255) NOT NULL,
           number VARCHAR(255) NOT NULL
         )
@@ -83,8 +83,8 @@ const initDb = async () => {
     await kmcPool.query(`
         CREATE TABLE IF NOT EXISTS reviews (
             id SERIAL PRIMARY KEY,
-            university_id INTEGER REFERENCES universities(id) ON DELETE CASCADE,
-            course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE,
+            university_id INTEGER,
+            course_id INTEGER,
             professor VARCHAR(255) NOT NULL,
             CC VARCHAR(255) NOT NULL,
             CN VARCHAR(255) NOT NULL,
@@ -95,7 +95,7 @@ const initDb = async () => {
             review TEXT,
             tags TEXT[],
             flags INTEGER DEFAULT 0,
-            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            timestamp VARCHAR(255)
         )
       `);
       console.log('Table feedback created (or already exists).');

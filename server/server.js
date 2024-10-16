@@ -22,12 +22,8 @@ const corsOptions = {
 app.use(cors(corsOptions));  // Apply CORS middleware with options
 
 // Configure PostgreSQL client
-const pool = new Pool({ // manages a pool of connections to the PostgreSQL database. this allows multiple connections and queries to be handled efficiently
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+const pool = new Pool({
+  connectionString: process.env.DB_URL, // Using environment variable for security
 });
 
 const authenticateToken = (req, res, next) => {
@@ -247,14 +243,14 @@ app.get('/reviews', async (req, res) => {
 
 // Create review endpoint
 app.post('/reviews', async (req, res) => {
-  let { university_id, course_id, professor, CC, CN, difficulty, workload, enjoyment, recommended, review, tags } = req.body;
+  let { university_id, course_id, professor, CC, CN, difficulty, workload, enjoyment, recommended, review, tags, timestamp } = req.body;
   professor = encode(professor);
   review = encode(review);
 
   try {
     await pool.query(
-      'INSERT INTO reviews (university_id, course_id, professor, CC, CN, difficulty, workload, enjoyment, recommended, review, tags) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
-      [university_id, course_id, professor, CC, CN, difficulty, workload, enjoyment, recommended, review, tags]
+      'INSERT INTO reviews (university_id, course_id, professor, CC, CN, difficulty, workload, enjoyment, recommended, review, tags, timestamp) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)',
+      [university_id, course_id, professor, CC, CN, difficulty, workload, enjoyment, recommended, review, tags, timestamp]
     );
     res.status(201).send('Review added successfully');
   } catch (err) {
