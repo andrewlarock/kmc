@@ -47,7 +47,7 @@ const ReviewForm = () => {
     // Function to fetch course details from the URL and auto-fill into form
     const fetchCourseDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/courses/${courseId}`); // Use the correct backend URL
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/courses/${courseId}`); // Use the correct backend URL
         
         if (response.status === 204) { // Handles course not being found
           console.error('Course not found');
@@ -69,7 +69,7 @@ const ReviewForm = () => {
     // Function to fetch university name from the URL and auto-fill into form
     const fetchUniversityName = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/universities/${universityId}`); // Fetch university by ID
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/universities/${universityId}`); // Fetch university by ID
   
         if (response.status === 204) { // Handles university not being found
           console.error('University not found');
@@ -140,7 +140,7 @@ const ReviewForm = () => {
         }
         
         // Check if the course exists
-        let response = await axios.get('http://localhost:5000/courses', {
+        let response = await axios.get(`${process.env.REACT_APP_API_URL}/courses`, {
         params: { university_id: universityId, code: normalizedCode, number: normalizedNumber },
         });
     
@@ -152,13 +152,13 @@ const ReviewForm = () => {
         // Course does not exist, create it
         if (response.status === 204) {
         try {
-            const createResponse = await axios.post('http://localhost:5000/courses', {
+            const createResponse = await axios.post(`${process.env.REACT_APP_API_URL}/courses`, {
                 university_id: universityId,
                 code: normalizedCode,
                 number: normalizedNumber,
             });
             // Return the newly created course ID
-            return (await axios.get('http://localhost:5000/courses', {
+            return (await axios.get(`${process.env.REACT_APP_API_URL}/courses`, {
             params: { university_id: universityId, code: normalizedCode, number: normalizedNumber },
             })).data.id;
         } catch (createError) {
@@ -204,7 +204,7 @@ const ReviewForm = () => {
         try {
             // Fetch university ID by university name using HTTP request
             const schoolUppercase = reviewSchool.toUpperCase();
-            const response = await axios.get(`http://localhost:5000/universities/name/${schoolUppercase}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/universities/name/${schoolUppercase}`);
             const universityId = response.data.id;
 
             // Validate the course and get its ID
@@ -230,7 +230,7 @@ const ReviewForm = () => {
             };
 
             // Submit the review
-            const submitResponse = await axios.post('http://localhost:5000/reviews', reviewData);
+            const submitResponse = await axios.post(`${process.env.REACT_APP_API_URL}/reviews`, reviewData);
 
             // Handle successful submission
             if (submitResponse.status === 201) {

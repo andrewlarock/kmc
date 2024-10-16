@@ -36,7 +36,7 @@ const LoginPage = () => {
     const handleLogin = async () => {
         try {
             // Make POST request to login API with email and password
-            const response = await axios.post('http://localhost:5000/login', { email, password }, {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, { email, password }, {
                 withCredentials: true, // Ensure cookies are sent and received
             });
 

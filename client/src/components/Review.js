@@ -42,7 +42,7 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
         if (userConfirmed) {
             try {
                 // Call the API to increment the flags
-                const response = await axios.post('http://localhost:5000/reviews/flag', { reviewId: id });
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/reviews/flag`, { reviewId: id });
                 alert(`Thanks for flagging that review! We appreciate your help in keeping our community clean and respectful.`);
             } catch (error) {
                 console.error('Error flagging review:', error);

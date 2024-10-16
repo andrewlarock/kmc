@@ -41,7 +41,7 @@ const UniversityPage = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/reviews');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/reviews`);
         const filteredReviews = response.data
           .filter(review => review.university_id == id)
           .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
@@ -59,7 +59,7 @@ const UniversityPage = () => {
   useEffect(() => {
     const fetchUniversity = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/universities/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/universities/${id}`);
         setUniversity(response.data);
       } catch (error) {
         console.error('Error fetching university data:', error);
@@ -123,7 +123,7 @@ const UniversityPage = () => {
     const result = validateAndExtract(course); //Pass the course directly to validation
     if (result) {
       try {
-        const response = await axios.get('http://localhost:5000/courses', {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/courses`, {
           params: { university_id: id, code: result.code, number: result.number },
         });
   
@@ -133,7 +133,7 @@ const UniversityPage = () => {
           setInput(''); // Clear input field
         } else {
           // If course does not exist, create it
-          const createResponse = await axios.post('http://localhost:5000/courses', {
+          const createResponse = await axios.post(`${process.env.REACT_APP_API_URL}/courses`, {
             university_id: id,
             code: result.code,
             number: result.number,

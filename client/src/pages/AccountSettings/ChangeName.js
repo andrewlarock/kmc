@@ -35,7 +35,7 @@ const ChangeName = () => {
     // Function to check if the user loses authentication during any process
     const checkAuthentication = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/auth/check-token', { withCredentials: true });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, { withCredentials: true });
             return response.data.isAuthenticated;
         } catch (err) {
             setError('Failed to check authentication status.');
@@ -67,7 +67,7 @@ const ChangeName = () => {
         try {
         // Call the API to update the name
         const response = await axios.put(
-            'http://localhost:5000/account/update-name',
+            `${process.env.REACT_APP_API_URL}/account/update-name`,
             { newName },
             { withCredentials: true } // Ensure cookies are sent with the request
         );

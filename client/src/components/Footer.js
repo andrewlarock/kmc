@@ -44,7 +44,7 @@ const Footer = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/feedback', { feedback });
+      await axios.post(`${process.env.REACT_APP_API_URL}/feedback`, { feedback });
       handleFeedback();
       setFeedback(''); // Clear input after successful submission
     } catch (error) {
