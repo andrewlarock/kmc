@@ -9,14 +9,14 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
     const navigate = useNavigate();
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 475);
 
-    // Parse the tags string into an array
+    // Parse the tags string into an array because we had to change how the database handles tags with deployment
     let tagArray;
     try {
         if (typeof tags === 'string') {
             // Replace curly braces with square brackets and split by commas
             tagArray = tags.replace(/^{|}$/g, '') // Remove curly braces
                            .split(',')            // Split by commas
-                           .map(tag => tag.trim()); // Trim each tag
+                           .map(tag => tag.trim().replace(/^"|"$/g, '')); // Trim each tag and remove surrounding quotes
         } else {
             tagArray = tags; // Assume it's already an array
         }
