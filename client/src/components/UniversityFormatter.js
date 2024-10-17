@@ -2,7 +2,7 @@ import React from 'react';
 
 // Helper functions for formatting a university name and location
 const exceptions = ["at", "of"];
-const acronyms = ["SUNY", "CUNY", "A&M", "A&T"];
+const acronyms = ["SUNY", "CUNY", "A&M", "A&T", "CET-"];
 
 const capitalizeWord = (word, index) => {
   if (acronyms.includes(word.toUpperCase())) {

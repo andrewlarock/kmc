@@ -9,7 +9,7 @@ import '../css/mobile/HomeMobile.css';
 // Turn this functionality into a reusable component for other pages in the future
 
 const exceptions = ["at", "of"]; // Keep these lower case
-const acronyms = ["SUNY", "CUNY", "A&M", "A&T"]; // Keep these capitalized
+const acronyms = ["SUNY", "CUNY", "A&M", "A&T", "CET-"]; // Keep these capitalized
 
 const capitalizeWord = (word, index) => {
     // Keep acronyms fully capitalized
