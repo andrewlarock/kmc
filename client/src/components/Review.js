@@ -9,8 +9,21 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
     const navigate = useNavigate();
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 475);
 
-    // Convert tags to array if it's a string
-    const tagArray = Array.isArray(tags) ? tags : JSON.parse(tags.replace(/({|})/g, '').split(',').map(tag => `"${tag.trim()}"`));
+    // Parse the tags string into an array
+    let tagArray;
+    try {
+        if (typeof tags === 'string') {
+            // Replace curly braces with square brackets and split by commas
+            tagArray = tags.replace(/^{|}$/g, '') // Remove curly braces
+                           .split(',')            // Split by commas
+                           .map(tag => tag.trim()); // Trim each tag
+        } else {
+            tagArray = tags; // Assume it's already an array
+        }
+    } catch (error) {
+        console.error('Error parsing tags:', error);
+        tagArray = []; // Set to an empty array if parsing fails
+    }
 
     let difScoreColor;
     let difScoreText;
