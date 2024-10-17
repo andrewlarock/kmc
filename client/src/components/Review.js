@@ -9,6 +9,9 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
     const navigate = useNavigate();
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 475);
 
+    // Convert tags to array if it's a string
+    const tagArray = Array.isArray(tags) ? tags : JSON.parse(tags.replace(/({|})/g, '').split(',').map(tag => `"${tag.trim()}"`));
+
     let difScoreColor;
     let difScoreText;
     let worScoreColor;
@@ -196,7 +199,7 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
 
                     <div className='review-tags-box'>
                         <div className='review-tags-container'>
-                        {tags.map((tag, index) => (
+                        {tagArray.map((tag, index) => (
                             <Tag key={index} name={tag} isSelected={false} isClickable={false} />
                         ))}
                         </div>
@@ -251,7 +254,7 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
 
                 <div className='review-tags-box-m'>
                     <div className='review-tags-container-m'>
-                    {tags.map((tag, index) => (
+                    {tagArray.map((tag, index) => (
                         <Tag key={index} name={tag} isSelected={false} isClickable={false} />
                     ))}
                     </div>
