@@ -373,7 +373,7 @@ input[type="radio"]:checked + .circle {
 .review-error {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: clamp(.6rem, .9vw, .9rem);
+    font-size: clamp(.6rem, .9vw, .8rem);
     color: #C53E3E;
     margin-top: 1rem;
     margin-left: 3.5rem;

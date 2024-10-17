@@ -447,8 +447,8 @@ const ReviewForm = () => {
 
                   <div className='form-footer-disclaimer-container'>
                     <div className='form-disclaimer-text'>
-                        All reviews are completely anonymous. By submitting this review, I confirm that I have read and agree to the 
-                        <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={() => window.open('/review-form/guidelines', '_blank')}> Review Guidelines</span>. 
+                        All reviews are completely anonymous. By submitting this review, I confirm that I have read and agree to the&nbsp;
+                        <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={() => window.open('/review-form/guidelines', '_blank')}>Review Guidelines</span>. 
                         I understand that the submitted review will become the property of KickMyCourse.
                     </div>
                   </div>
@@ -640,8 +640,8 @@ const ReviewForm = () => {
                 </button>
                 <div className='form-footer-disclaimer-container-m'>
                     <div className='form-disclaimer-text-m'>
-                        All reviews are completely anonymous. By submitting this review, I confirm that I have read and agree to the 
-                        <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={() => window.open('/review-form/guidelines', '_blank')}> Review Guidelines</span>. 
+                        All reviews are completely anonymous. By submitting this review, I confirm that I have read and agree to the&nbsp;
+                        <span style={{ textDecoration: 'underline', cursor: 'pointer' }} onClick={() => window.open('/review-form/guidelines', '_blank')}>Review Guidelines</span>. 
                         I understand that the submitted review will become the property of KickMyCourse.
                     </div>
                 </div>

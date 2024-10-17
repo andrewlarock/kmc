@@ -71,17 +71,18 @@ const UniversityPage = () => {
   }, [id]);
 
   const validateAndExtract = (input) => {
-    const validPattern = /^(?<code>[A-Z0-9]{2,5}) ?(?<number>[A-Z0-9]{2,5})$/;
+    // Match 2-5 letters for the course code, followed by 2-5 digits for the course number
+    const validPattern = /^(?<code>[A-Z]{2,5})(?<number>[0-9]{2,5})$/;
     const match = input.toUpperCase().trim().match(validPattern);
     
     if (!match) {
-      handleFeedback('Please enter a valid course code and number. To learn how to format a course name, look for "Searching for a Class & Formatting a Class Name" on the About page.');
-      return null;
+        handleFeedback('Please enter a valid course code and number. To learn how to format a course name, look for "Searching for a Class & Formatting a Class Name" on the About page.');
+        return null;
     }
 
     const { code, number } = match.groups;
     return { code, number };
-  };
+};
 
   // Function to sort reviews based on enjoyment rating
   const sortedReviews = () => {
@@ -120,7 +121,7 @@ const UniversityPage = () => {
   const handleCourseSelection = async (course) => {
     setInput(course); // Update the input field with the selected course for display purposes
     
-    const result = validateAndExtract(course); //Pass the course directly to validation
+    const result = validateAndExtract(course); // Pass the course directly to validation
     if (result) {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/courses`, {
