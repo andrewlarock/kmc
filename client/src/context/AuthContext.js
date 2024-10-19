@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -15,34 +16,36 @@ const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token'); // Get the token from localStorage
 
     if (token) {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
-          headers: {
-            Authorization: `Bearer ${token}`, // Include token in the headers
-          },
-        });
+        try {
+            const decodedToken = jwt_decode(token); // Decode the token to get user info
+            setUserName(decodedToken.name); // Set userName from the decoded token
+            setUserEmail(decodedToken.email); // Set userEmail from the decoded token
+            
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include token in the headers
+                },
+            });
 
-        if (response.data.isAuthenticated) {
-          setIsAuthenticated(true);
-          setUserName(response.data.name);
-          setUserEmail(response.data.email);
-        } else {
-          setIsAuthenticated(false);
-          setUserName('');
-          setUserEmail('');
+            if (response.data.isAuthenticated) {
+                setIsAuthenticated(true);
+            } else {
+                setIsAuthenticated(false);
+                setUserName('');
+                setUserEmail('');
+            }
+        } catch (error) {
+            setIsAuthenticated(false);
+            setUserName('');
+            setUserEmail('');
+            console.error('Error checking authentication:', error.message);
         }
-      } catch (error) {
-        setIsAuthenticated(false);
-        setUserName('');
-        setUserEmail('');
-        console.error('Error checking authentication:', error.message);
-      }
     } else {
-      setIsAuthenticated(false);
+        setIsAuthenticated(false);
     }
 
-    setLoading(false); 
-  };
+    setLoading(false);
+};
 
   // Function to refresh the token only when the user is active
   const refreshToken = async () => {
