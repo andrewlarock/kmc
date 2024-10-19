@@ -10,11 +10,29 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // Add loading state
   let userActive = false; // Track user activity
 
+  // Function to decode JWT and check expiration
+  const isTokenExpired = (token) => {
+    if (!token) return true; // No token means expired
+    const payload = JSON.parse(atob(token.split('.')[1])); // Decode the JWT payload
+    const now = Date.now() / 1000; // Current time in seconds
+    return payload.exp < now; // Return true if the token is expired
+  };
+
   // Function to check if the user is authenticated using the token from localStorage
   const checkAuthentication = async () => {
     const token = localStorage.getItem('token'); // Get the token from localStorage
 
     if (token) {
+      if (isTokenExpired(token)) {
+        // Token is expired
+        localStorage.removeItem('token'); // Remove expired token
+        setIsAuthenticated(false);
+        setUserName('');
+        setUserEmail('');
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
           headers: {
@@ -24,7 +42,6 @@ const AuthProvider = ({ children }) => {
 
         if (response.data.isAuthenticated) {
           setIsAuthenticated(true);
-          console.log('Name: ', userName)
           setUserName(response.data.name);
           setUserEmail(response.data.email);
         } else {
@@ -50,6 +67,15 @@ const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token'); // Get the token from localStorage
 
     if (userActive && token) {
+      if (isTokenExpired(token)) {
+        // Token is expired
+        localStorage.removeItem('token'); // Remove expired token
+        setIsAuthenticated(false);
+        setUserName('');
+        setUserEmail('');
+        return;
+      }
+
       try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/refresh-token`, {}, {
           headers: {
