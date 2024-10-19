@@ -193,7 +193,7 @@ const UniversityPage = () => {
   if (!university) {
     return  <div className="not-found-container">
               <img src={logo} alt="Logo" />
-              <p>The page you're looking for does not exist.</p>
+              <p>Loading...</p>
             </div>;
 }
 
