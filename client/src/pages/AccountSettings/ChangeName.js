@@ -87,6 +87,7 @@ const ChangeName = () => {
                 setSuccess('Name updated successfully.');
                 setNewName('');
                 setUserName(newName); // Update userName in AuthContext
+                localStorage.setItem('token', response.data.token); // Update local storage with the new token
             } else {
                 setError(response.data.message || 'Failed to update name.');
             }

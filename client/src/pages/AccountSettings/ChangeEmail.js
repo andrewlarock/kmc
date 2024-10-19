@@ -100,6 +100,7 @@ const ChangeEmail = () => {
                 setUserEmail(newEmail); // Update email in context
                 setNewEmail(''); // Clear input fields
                 setConfirmNewEmail('');
+                localStorage.setItem('token', response.data.token); // Update local storage with the new token
             } else {
                 setError(response.data.message || 'Failed to update email.');
             }
