@@ -27,46 +27,6 @@ const pool = new Pool({
   connectionString: process.env.DB_URL, // Using environment variable for security
 });
 
-await pool.query(`
-  CREATE TABLE IF NOT EXISTS universities (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    location VARCHAR(255),
-    popularity INTEGER DEFAULT 0
-  )
-`);
-console.log('Table universities created (or already exists).');
-
-await pool.query(`
-  CREATE TABLE IF NOT EXISTS universities (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    location VARCHAR(255),
-    popularity INTEGER DEFAULT 0
-  )
-`);
-console.log('Table universities created (or already exists).');
-
-await pool.query(`
-  CREATE TABLE IF NOT EXISTS reviews (
-      id SERIAL PRIMARY KEY,
-      university_id INTEGER,
-      course_id INTEGER,
-      professor VARCHAR(255) NOT NULL,
-      CC VARCHAR(255) NOT NULL,
-      CN VARCHAR(255) NOT NULL,
-      difficulty INTEGER CHECK (difficulty >= 1 AND difficulty <= 10),
-      workload INTEGER CHECK (workload >= 1 AND workload <= 10),
-      enjoyment INTEGER CHECK (enjoyment >= 1 AND enjoyment <= 10),
-      recommended VARCHAR(255) NOT NULL,
-      review TEXT,
-      tags TEXT[],
-      flags INTEGER DEFAULT 0,
-      timestamp VARCHAR(255)
-  )
-`);
-console.log('Table feedback created (or already exists).');
-
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1]; // Extract token from the header
