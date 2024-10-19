@@ -11,41 +11,54 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // Add loading state
   let userActive = false; // Track user activity
 
+  const isTokenExpired = (token) => {
+    const decodedToken = jwt_decode(token);
+    return decodedToken.exp < Date.now() / 1000;
+  };
+
   // Function to check if the user is authenticated using the token from localStorage
   const checkAuthentication = async () => {
-    const token = localStorage.getItem('token'); // Get the token from localStorage
+    const token = localStorage.getItem('token');
 
     if (token) {
-        try {
-            const decodedToken = jwt_decode(token); // Decode the token to get user info
-            setUserName(decodedToken.name); // Set userName from the decoded token
-            setUserEmail(decodedToken.email); // Set userEmail from the decoded token
-            
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
-                headers: {
-                    Authorization: `Bearer ${token}`, // Include token in the headers
-                },
-            });
-
-            if (response.data.isAuthenticated) {
-                setIsAuthenticated(true);
-            } else {
-                setIsAuthenticated(false);
-                setUserName('');
-                setUserEmail('');
-            }
-        } catch (error) {
-            setIsAuthenticated(false);
-            setUserName('');
-            setUserEmail('');
-            console.error('Error checking authentication:', error.message);
-        }
-    } else {
+      if (isTokenExpired(token)) {
         setIsAuthenticated(false);
+        setUserName('');
+        setUserEmail('');
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const decodedToken = jwt_decode(token);
+        setUserName(decodedToken.name);
+        setUserEmail(decodedToken.email);
+
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.data.isAuthenticated) {
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+          setUserName('');
+          setUserEmail('');
+        }
+      } catch (error) {
+        console.error('Error checking authentication:', error.message);
+        setIsAuthenticated(false);
+        setUserName('');
+        setUserEmail('');
+      }
+    } else {
+      setIsAuthenticated(false);
     }
 
     setLoading(false);
-};
+  };
 
   // Function to refresh the token only when the user is active
   const refreshToken = async () => {
@@ -61,7 +74,6 @@ const AuthProvider = ({ children }) => {
 
         const newToken = response.data.token;
         localStorage.setItem('token', newToken); // Update the token in localStorage
-        console.log('Token refreshed');
       } catch (error) {
         console.error('Error refreshing token:', error.message);
       }
