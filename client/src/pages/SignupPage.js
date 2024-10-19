@@ -103,14 +103,14 @@ const SignupPage = () => {
             });
     
             // If signup is successful, response should contain the JWT token
-            const { token, email: responseEmail, name: responseName } = response.data;
+            const { token, name, email: responseEmail} = response.data;
     
             // Store the token in localStorage
             localStorage.setItem('token', token);
     
             // Update the AuthContext to reflect that the user is authenticated
             setIsAuthenticated(true);
-            setUserName(responseName);
+            setUserName(name);
             setUserEmail(responseEmail);
     
             // Clear any previous error messages
