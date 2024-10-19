@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar-m">
-      <div className="top-spacer"></div>
+      {/* <div className="top-spacer"></div> */}
       <div className="navbar-left-m">
         <a href="/">
           <img src={logo} alt="Logo" className="logo-m" />

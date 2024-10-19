@@ -8,6 +8,7 @@ const AuthProvider = ({ children }) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [loading, setLoading] = useState(true); // Add loading state
+  let userActive = false; // Track user activity
 
   // Function to check if the user is authenticated
   const checkAuthentication = async () => {
@@ -35,25 +36,45 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // Function to refresh the token
+  // Function to refresh the token only when user is active
   const refreshToken = async () => {
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/auth/refresh-token`, {}, {
-        withCredentials: true
-      });
-    } catch (error) {
-      console.error('Error refreshing token:', error.message);
+    if (userActive) {
+      try {
+        await axios.post(`${process.env.REACT_APP_API_URL}/auth/refresh-token`, {}, {
+          withCredentials: true,
+        });
+        console.log('Token refreshed');
+      } catch (error) {
+        console.error('Error refreshing token:', error.message);
+      }
     }
   };
 
+  // Monitor user activity
+  const setUserActive = () => {
+    userActive = true;
+  };
+
   useEffect(() => {
-    checkAuthentication(); // Check auth status when the app first loads
+    checkAuthentication();
 
-    // Set up an interval to refresh the token every 15 minutes
-    const intervalId = setInterval(refreshToken, 15 * 60 * 1000);
+    // Refresh token every 15 minutes ONLY if user is active
+    const intervalId = setInterval(() => {
+      refreshToken();
+      userActive = false; // Reset user activity after each refresh
+    }, 15 * 60 * 1000);
 
-    // Clean up interval on unmount
-    return () => clearInterval(intervalId);
+    // Listen for user activity events
+    window.addEventListener('click', setUserActive);
+    window.addEventListener('keypress', setUserActive);
+    window.addEventListener('mousemove', setUserActive);
+
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener('click', setUserActive);
+      window.removeEventListener('keypress', setUserActive);
+      window.removeEventListener('mousemove', setUserActive);
+    };
   }, []);
   
   return (
