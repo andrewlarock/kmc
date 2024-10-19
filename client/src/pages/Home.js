@@ -99,7 +99,6 @@ const Home = () => {
 
   // Handle selecting a university
   const handleSelectUniversity = async (university) => {
-    console.log(university);
     setSearchInput('');
     setFilteredUniversities([]);
     setDropdownVisible(false); // Hide dropdown after selection

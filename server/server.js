@@ -51,6 +51,21 @@ app.get('/auth/check-token', authenticateToken, (req, res) => {
   res.json({ isAuthenticated: true, email: req.user.email, name: req.user.name }); // Return the user's name from the decoded token
 });
 
+// Refresh token endpoint
+app.post('/auth/refresh-token', authenticateToken, (req, res) => {
+  const userId = req.user.userId;
+  const email = req.user.email;
+  const name = req.user.name;
+
+  const newToken = jwt.sign(
+    { userId, email, name },
+    'your_jwt_secret',
+    { expiresIn: '1h' }
+  );
+
+  return res.status(200).json({ message: 'Token refreshed successfully', token: newToken });
+});
+
 // Login endpoint
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -81,21 +96,6 @@ app.post('/login', async (req, res) => {
     console.error(err);
     return res.status(500).send('Server error');
   }
-});
-
-// Refresh token endpoint
-app.post('/auth/refresh-token', authenticateToken, (req, res) => {
-  const userId = req.user.userId;
-  const email = req.user.email;
-  const name = req.user.name;
-
-  const newToken = jwt.sign(
-    { userId, email, name },
-    'your_jwt_secret',
-    { expiresIn: '1h' }
-  );
-
-  return res.status(200).json({ message: 'Token refreshed successfully', token: newToken });
 });
 
 // Signup endpoint
@@ -241,7 +241,7 @@ app.post('/reviews/flag', async (req, res) => {
 
   try {
     const result = await pool.query(
-      'UPDATE reviews SET flags = flags + 1 WHERE id = $1 RETURNING flags',
+      'UPDATE reviews SET flags = COALESCE(flags, 0) + 1 WHERE id = $1 RETURNING flags',
       [reviewId]
     );
 
