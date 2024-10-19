@@ -89,22 +89,35 @@ const SignupPage = () => {
     };
 
     const handleSignup = async () => {
-
+        // Validate inputs before making the request
         if (!validateInputs()) {
             return; // Stop the signup process if validation fails
         }
-
+    
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/signup`, { email, password, name }, {
-                withCredentials: true, // This tells axios to include cookies in requests
-             });
-
+            // Make the POST request to the backend API
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, { 
+                email, 
+                password, 
+                name 
+            });
+    
+            // If signup is successful, response should contain the JWT token
+            const { token, email: responseEmail, name: responseName } = response.data;
+    
+            // Store the token in localStorage
+            localStorage.setItem('token', token);
+    
+            // Update the AuthContext to reflect that the user is authenticated
             setIsAuthenticated(true);
-            setUserName(name);
-            setUserEmail(email);
-            setError('')
+            setUserName(responseName);
+            setUserEmail(responseEmail);
+    
+            // Clear any previous error messages
+            setError('');
+    
+            // Navigate the user to the homepage or another protected route
             navigate('/');
-
         } catch (error) {
             console.error(error.response.data);
             setError(error.response.data || "Signup failed. Please try again.");

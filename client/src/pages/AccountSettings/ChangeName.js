@@ -34,8 +34,15 @@ const ChangeName = () => {
 
     // Function to check if the user loses authentication during any process
     const checkAuthentication = async () => {
+        const token = localStorage.getItem('token'); // Get the token from localStorage
+        if (!token) return false;
+
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, { withCredentials: true });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include token in the headers
+                },
+            });
             return response.data.isAuthenticated;
         } catch (err) {
             setError('Failed to check authentication status.');
@@ -65,22 +72,26 @@ const ChangeName = () => {
         }
 
         try {
-        // Call the API to update the name
-        const response = await axios.put(
-            `${process.env.REACT_APP_API_URL}/account/update-name`,
-            { newName },
-            { withCredentials: true } // Ensure cookies are sent with the request
-        );
+            // Call the API to update the name
+            const response = await axios.put(
+                `${process.env.REACT_APP_API_URL}/account/update-name`,
+                { newName },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`, // Include token in the headers
+                    },
+                }
+            );
 
-        if (response.status === 200) {
-            setSuccess('Name updated successfully.');
-            setNewName('')
-            setUserName(newName); // Update userName in AuthContext
-        } else {
-            setError(response.data.message || 'Failed to update name.');
-        }
+            if (response.status === 200) {
+                setSuccess('Name updated successfully.');
+                setNewName('');
+                setUserName(newName); // Update userName in AuthContext
+            } else {
+                setError(response.data.message || 'Failed to update name.');
+            }
         } catch (err) {
-        setError(err.response?.data?.message || 'An error occurred while updating name.');
+            setError(err.response?.data?.message || 'An error occurred while updating name.');
         }
     };
 

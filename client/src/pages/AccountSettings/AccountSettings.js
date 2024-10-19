@@ -40,8 +40,15 @@ const AccountSettings = () => {
 
     // Function to check if the user loses authentication during any process
     const checkAuthentication = async () => {
+        const token = localStorage.getItem('token'); // Get the token from localStorage
+        if (!token) return false;
+
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, { withCredentials: true });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include token in the headers
+                },
+            });
             return response.data.isAuthenticated;
         } catch (err) {
             setError('Failed to check authentication status.');
@@ -52,11 +59,12 @@ const AccountSettings = () => {
     // Function to handle user logout
     const handleLogout = async () => {
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/logout`, {}, { withCredentials: true });
-            setIsAuthenticated(false); // Update authentication state
-            setUserName(''); // Clear username from context
-            setUserEmail(''); // Clear email from context
-            navigate('/'); // Redirect to home or login page
+            await axios.post(`${process.env.REACT_APP_API_URL}/logout`, {});
+            localStorage.removeItem('token'); // Clear token from localStorage
+            setIsAuthenticated(false);
+            setUserName('');
+            setUserEmail('');
+            navigate('/');
         } catch (error) {
             console.error('Logout failed:', error);
             alert('An error occurred while logging out. Please try again.');
@@ -69,14 +77,19 @@ const AccountSettings = () => {
         if (!authenticated) {
             setError('You are not authenticated. Please log in again.');
             setTimeout(() => {
-                window.location.href = '/'; // This will navigate and refresh the page
+                window.location.href = '/';
             }, 3000);
             return;
         }
         const confirmDelete = window.confirm('Are you sure you want to delete your account? This action is irreversible.');
         if (confirmDelete) {
             try {
-                await axios.delete(`${process.env.REACT_APP_API_URL}/account/delete`, { withCredentials: true });
+                await axios.delete(`${process.env.REACT_APP_API_URL}/account/delete`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`, // Include token in the headers
+                    },
+                });
+                localStorage.removeItem('token'); // Clear token from localStorage
                 setIsAuthenticated(false);
                 setUserName('');
                 setUserEmail('');
@@ -90,8 +103,12 @@ const AccountSettings = () => {
 
     const fetchBookmarks = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/bookmark`, { withCredentials: true });
-            setBookmarks(response.data); // Set bookmarks from the API response
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/bookmark`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`, // Include token in the headers
+                },
+            });
+            setBookmarks(response.data);
         } catch (error) {
             console.error('Error fetching bookmarks:', error);
         }
@@ -100,6 +117,7 @@ const AccountSettings = () => {
     useEffect(() => {
         fetchBookmarks();
     }, []);
+
 
     if (isDesktop) {
         return (

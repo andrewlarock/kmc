@@ -35,8 +35,15 @@ const ChangeEmail = () => {
 
     // Function to check if the user loses authentication during any process
     const checkAuthentication = async () => {
+        const token = localStorage.getItem('token'); // Get the token from localStorage
+        if (!token) return false;
+
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, { withCredentials: true });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include token in the headers
+                },
+            });
             return response.data.isAuthenticated;
         } catch (err) {
             setError('Failed to check authentication status.');
@@ -66,34 +73,38 @@ const ChangeEmail = () => {
 
         // Check if new emails match
         if (newEmail !== confirmNewEmail) {
-        setError('New email and confirm email do not match.');
-        return;
+            setError('New email and confirm email do not match.');
+            return;
         }
 
         // Check if the new email is a valid format
         if (!validateEmail(newEmail)) {
-        setError('Please enter a valid email address.');
-        return;
+            setError('Please enter a valid email address.');
+            return;
         }
 
         try {
-        // Call the API to update the email
-        const response = await axios.put(
-            `${process.env.REACT_APP_API_URL}/account/update-email`,
-            { newEmail },
-            { withCredentials: true } // Ensure cookies are sent with the request
-        );
+            // Call the API to update the email
+            const response = await axios.put(
+                `${process.env.REACT_APP_API_URL}/account/update-email`,
+                { newEmail },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`, // Include token in the headers
+                    },
+                }
+            );
 
-        if (response.status === 200) {
-            setSuccess('Email updated successfully.');
-            setUserEmail(newEmail); // Update email in context
-            setNewEmail(''); // Clear input fields
-            setConfirmNewEmail('');
-        } else {
-            setError(response.data.message || 'Failed to update email.');
-        }
+            if (response.status === 200) {
+                setSuccess('Email updated successfully.');
+                setUserEmail(newEmail); // Update email in context
+                setNewEmail(''); // Clear input fields
+                setConfirmNewEmail('');
+            } else {
+                setError(response.data.message || 'Failed to update email.');
+            }
         } catch (err) {
-        setError(err.response?.data?.message || 'An error occurred while updating email.');
+            setError(err.response?.data?.message || 'An error occurred while updating email.');
         }
     };
 
