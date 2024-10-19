@@ -5,7 +5,6 @@
     padding: 1rem;
     background-color: #f7f7f7;
     color: #36454F;
-    margin-top: 15px; 
 }
 
 .top-spacer {
@@ -17,7 +16,7 @@
     left: 0;
     z-index: 1000; 
 }
-  
+
 .navbar-left-m {
     display: flex;
     align-items: center;

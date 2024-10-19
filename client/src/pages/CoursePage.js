@@ -80,7 +80,7 @@ const CoursePage = () => {
             // Find the 3 most popular tags
             const tagCount = {};
             filteredReviews.forEach(review => {
-              
+
                 // Check if tags is a string, and split it into an array if necessary
                 const tagsArray = typeof review.tags === 'string' ? review.tags.replace(/["{}]/g, '').split(',') : review.tags;
     
@@ -241,14 +241,14 @@ const CoursePage = () => {
   if (!university) {
     return  <div className="not-found-container">
               <img src={logo} alt="Logo" />
-              <p>The page you're looking for does not exist.</p>
+              <p>Loading...</p>
             </div>;
   }
 
   if (!course) {
     return  <div className="not-found-container">
               <img src={logo} alt="Logo" />
-              <p>The page you're looking for does not exist.</p>
+              <p>Loading...</p>
             </div>;
   }
 
