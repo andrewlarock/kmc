@@ -86,7 +86,7 @@ const ChangeName = () => {
             if (response.status === 200) {
                 setSuccess('Name updated successfully.');
                 setNewName('');
-                setUserName(newName); // Update userName in AuthContext
+                setUserName(response.data.name); // Update with the new name received from the server
             } else {
                 setError(response.data.message || 'Failed to update name.');
             }
