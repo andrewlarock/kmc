@@ -10,39 +10,54 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // Add loading state
   let userActive = false; // Track user activity
 
-  // Function to check if the user is authenticated
+  // Function to check if the user is authenticated using the token from localStorage
   const checkAuthentication = async () => {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
-        withCredentials: true
-      });
+    const token = localStorage.getItem('token'); // Get the token from localStorage
 
-      if (response.data.isAuthenticated) {
-        setIsAuthenticated(true);
-        setUserName(response.data.name);
-        setUserEmail(response.data.email);
-      } else {
+    if (token) {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in the headers
+          },
+        });
+
+        if (response.data.isAuthenticated) {
+          setIsAuthenticated(true);
+          setUserName(response.data.name);
+          setUserEmail(response.data.email);
+        } else {
+          setIsAuthenticated(false);
+          setUserName('');
+          setUserEmail('');
+        }
+      } catch (error) {
         setIsAuthenticated(false);
         setUserName('');
         setUserEmail('');
+        console.error('Error checking authentication:', error.message);
       }
-    } catch (error) {
+    } else {
       setIsAuthenticated(false);
-      setUserName('');
-      setUserEmail('');
-      console.error('Error checking authentication:', error.message);
-    } finally {
-      setLoading(false); // Set loading to false after checking
     }
+
+    setLoading(false); 
   };
 
-  // Function to refresh the token only when user is active
+  // Function to refresh the token only when the user is active
   const refreshToken = async () => {
-    if (userActive) {
+    const token = localStorage.getItem('token'); // Get the token from localStorage
+
+    if (userActive && token) {
       try {
-        await axios.post(`${process.env.REACT_APP_API_URL}/auth/refresh-token`, {}, {
-          withCredentials: true,
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/refresh-token`, {}, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in the headers
+          },
         });
+
+        const newToken = response.data.token;
+        localStorage.setItem('token', newToken); // Update the token in localStorage
         console.log('Token refreshed');
       } catch (error) {
         console.error('Error refreshing token:', error.message);
@@ -50,15 +65,14 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // Monitor user activity
   const setUserActive = () => {
     userActive = true;
   };
 
   useEffect(() => {
-    checkAuthentication();
+    checkAuthentication(); // Check authentication on component mount
 
-    // Refresh token every 15 minutes ONLY if user is active
+    // Refresh token every 15 minutes ONLY if the user is active
     const intervalId = setInterval(() => {
       refreshToken();
       userActive = false; // Reset user activity after each refresh

@@ -28,19 +28,20 @@ const pool = new Pool({
 });
 
 const authenticateToken = (req, res, next) => {
-  const token = req.cookies.token; // Get token from HTTP-only cookie
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; // Extract token from the header
+
   if (!token) {
-     // Return a 200 status with a message instead of an error code
-     return res.status(200).json({ isAuthenticated: false, message: 'No token provided' });
+    return res.status(200).json({ isAuthenticated: false, message: 'No token provided' });
   }
 
   jwt.verify(token, 'your_jwt_secret', (err, user) => {
-     if (err) {
-        return res.status(200).json({ isAuthenticated: false, message: 'Invalid token' });
-     }
+    if (err) {
+      return res.status(200).json({ isAuthenticated: false, message: 'Invalid token' });
+    }
 
-     req.user = user; // Attach the decoded user info to the request object
-     next(); // Proceed to the next middleware or route handler
+    req.user = user; // Attach the decoded user info to the request object
+    next(); // Proceed to the next middleware or route handler
   });
 };
 
@@ -52,43 +53,30 @@ app.get('/auth/check-token', authenticateToken, (req, res) => {
 
 // Login endpoint
 app.post('/login', async (req, res) => {
-  const { email, password } = req.body; // contains JSON sent by client
+  const { email, password } = req.body;
 
   try {
-    // Fetch the user by email
     const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
-    
-    // If no user is found, return an error
-    if (result.rows.length === 0) { 
-        return res.status(401).send('Invalid credentials');
+
+    if (result.rows.length === 0) {
+      return res.status(401).send('Invalid credentials');
     }
 
-    const user = result.rows[0]; // get the user from the returned row
-
-    // Compare the hashed password with the password provided by the user
+    const user = result.rows[0];
     const validPassword = await bcrypt.compare(password, user.password);
+
     if (!validPassword) {
-        return res.status(401).send('Invalid credentials');
+      return res.status(401).send('Invalid credentials');
     }
 
-    // Generate JWT token
     const token = jwt.sign(
-      { userId: user.id, email: user.email, name: user.name }, 
+      { userId: user.id, email: user.email, name: user.name },
       'your_jwt_secret',
       { expiresIn: '1h' }
     );
 
-    // Set token in HTTP-Only cookie
-    res.cookie('token', token, {
-      httpOnly: true,    // Cannot be accessed via JavaScript (prevents XSS)
-      sameSite: 'Lax',  // Helps prevent CSRF attacks
-      secure: true, // Ensure cookies are only sent over HTTPS
-      maxAge: 2 * 60 * 60 * 1000 // 2 hour expiration
-    });
-
-    // Send a success message
-    return res.status(200).json({ message: 'Login successful', email: user.email, name: user.name });
-
+    // Return token in the response body
+    return res.status(200).json({ message: 'Login successful', email: user.email, name: user.name, token });
   } catch (err) {
     console.error(err);
     return res.status(500).send('Server error');
@@ -101,23 +89,13 @@ app.post('/auth/refresh-token', authenticateToken, (req, res) => {
   const email = req.user.email;
   const name = req.user.name;
 
-  // Generate a new JWT token
   const newToken = jwt.sign(
     { userId, email, name },
     'your_jwt_secret',
     { expiresIn: '1h' }
   );
 
-  // Set the new token as an HTTP-Only cookie
-  res.cookie('token', newToken, {
-    httpOnly: true,
-    sameSite: 'Lax',
-    secure: true, // Ensure cookies are only sent over HTTPS
-    maxAge: 2 * 60 * 60 * 1000 // 2 hours expiration
-  });
-
-  // Send response indicating success
-  res.status(200).json({ message: 'Token refreshed successfully.' });
+  return res.status(200).json({ message: 'Token refreshed successfully', token: newToken });
 });
 
 // Signup endpoint
@@ -127,45 +105,34 @@ app.post('/signup', async (req, res) => {
   email = validator.normalizeEmail(email);
 
   try {
-      // Check if the email already exists
-      const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
-      if (existingUser.rows.length > 0) {
-          return res.status(400).send('Email already exists!');
-      }
+    const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
 
-      // Hash the password using bcrypt before saving it to the database
-      const hashedPassword = await bcrypt.hash(password, 10); // 10 is the salt rounds for bcrypt
-      const newUser = await pool.query('INSERT INTO users (email, password, name) VALUES ($1, $2, $3) RETURNING id, email, name', [email, hashedPassword, name]);
+    if (existingUser.rows.length > 0) {
+      return res.status(400).send('Email already exists!');
+    }
 
-      // Create JWT token valid for 1 hour
-      const token = jwt.sign(
-        { userId: newUser.rows[0].id, email: newUser.rows[0].email, name: newUser.rows[0].name },
-        'your_jwt_secret',
-        { expiresIn: '1h' }
-      );
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await pool.query(
+      'INSERT INTO users (email, password, name) VALUES ($1, $2, $3) RETURNING id, email, name',
+      [email, hashedPassword, name]
+    );
 
-      // Set token as HTTP-Only cookie
-      res.cookie('token', token, {
-        httpOnly: true,  // Cannot be accessed via JavaScript
-        sameSite: 'Lax',  // Prevents CSRF attacks
-        secure: true, // Ensure cookies are only sent over HTTPS
-        maxAge: 2 * 60 * 60 * 1000 // 1 hour expiration
-      });
+    const token = jwt.sign(
+      { userId: newUser.rows[0].id, email: newUser.rows[0].email, name: newUser.rows[0].name },
+      'your_jwt_secret',
+      { expiresIn: '1h' }
+    );
 
-      res.status(201).json({ message: 'User created successfully' });
+    return res.status(201).json({ message: 'User created successfully', token });
   } catch (err) {
-      console.error(err);
-      res.status(500).send('Server error');
+    console.error(err);
+    return res.status(500).send('Server error');
   }
 });
 
 // Log out endpoint
 app.post('/logout', (req, res) => {
-  res.clearCookie('token', {
-     httpOnly: true,
-     sameSite: 'Lax',
-     secure: true, // Ensure cookies are only sent over HTTPS
-  });
+  // No need to clear any cookies, just return a response
   res.status(200).json({ message: 'Logged out successfully' });
 });
 
@@ -379,16 +346,11 @@ app.put('/account/update-email', authenticateToken, async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    // Set the new token as an HTTP-Only cookie
-    res.cookie('token', newToken, {
-      httpOnly: true,  // Cannot be accessed via JavaScript
-      sameSite: 'Lax', // Helps prevent CSRF attacks
-      secure: true, // Ensure cookies are only sent over HTTPS
-      maxAge: 2 * 60 * 60 * 1000, // 1 hour expiration
+    // Return success response with new token
+    res.status(200).json({ 
+      message: 'Email updated successfully.',
+      token: newToken // Send the new token back to the client
     });
-
-    // Return success response
-    res.status(200).json({ message: 'Email updated successfully.' });
   } catch (error) {
     console.error('Error updating email:', error);
     res.status(500).json({ message: 'Server error occurred while updating email.' });
@@ -437,7 +399,6 @@ app.put('/account/update-name', authenticateToken, async (req, res) => {
   newName = encode(newName);
   
   try {
-
     // Update the user's name in the database
     await pool.query('UPDATE users SET name = $1 WHERE id = $2', [newName, userId]);
 
@@ -448,16 +409,11 @@ app.put('/account/update-name', authenticateToken, async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    // Set the new token as an HTTP-Only cookie
-    res.cookie('token', newToken, {
-      httpOnly: true,  // Cannot be accessed via JavaScript
-      sameSite: 'Lax', // Helps prevent CSRF attacks
-      secure: true, // Ensure cookies are only sent over HTTPS
-      maxAge: 2 * 60 * 60 * 1000, // 1 hour expiration
+    // Return success response with new token
+    res.status(200).json({ 
+      message: 'Name updated successfully.',
+      token: newToken // Send the new token back to the client
     });
-
-    // Return success response
-    res.status(200).json({ message: 'Name updated successfully.' });
   } catch (error) {
     console.error('Error updating name:', error);
     res.status(500).json({ message: 'Server error occurred while updating name.' });
@@ -479,13 +435,7 @@ app.delete('/account/delete', authenticateToken, async (req, res) => {
     // Delete the user account
     await pool.query('DELETE FROM users WHERE id = $1', [userId]);
 
-    // Clear the authentication token cookie after deletion
-    res.clearCookie('token', {
-      httpOnly: true,
-      secure: true, // Ensure cookies are only sent over HTTPS
-      sameSite: 'Lax',
-    });
-
+    // Return success response
     return res.status(200).json({ message: 'Account deleted successfully.' });
   } catch (error) {
     console.error('Error deleting account:', error);

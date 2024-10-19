@@ -36,20 +36,29 @@ const LoginPage = () => {
     const handleLogin = async () => {
         try {
             // Make POST request to login API with email and password
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, { email, password }, {
-                withCredentials: true, // Ensure cookies are sent and received
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, { 
+                email, 
+                password 
             });
-
-            // Handle successful login: navigate to home or dashboard page
-            if (response.status === 200) {
-                setIsAuthenticated(true);
-                setUserName(response.data.name);
-                setUserEmail(response.data.email);
-                setError('')
-                navigate('/'); // Redirect to home page
-            }
+    
+            // Extract token, email, and name from the response
+            const { token, name, email: responseEmail } = response.data;
+    
+            // Store the token in localStorage
+            localStorage.setItem('token', token);
+    
+            // Update AuthContext with user info
+            setIsAuthenticated(true);
+            setUserName(name);
+            setUserEmail(responseEmail);
+    
+            // Clear any error messages
+            setError('');
+    
+            // Navigate to home page or dashboard
+            navigate('/');
         } catch (error) {
-            // Handle errors (invalid credentials)
+            // Handle errors (e.g., invalid credentials)
             if (error.response && error.response.status === 401) {
                 setError('Invalid credentials. Please try again.');
             } else {

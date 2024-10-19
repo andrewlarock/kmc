@@ -41,8 +41,18 @@ const ChangePassword = () => {
 
     // Function to check if the user loses authentication during any process
     const checkAuthentication = async () => {
+        const token = localStorage.getItem('token'); // Get the token from local storage
+        if (!token) {
+            setError('You are not authenticated. Please log in again.');
+            return false;
+        }
+        
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, { withCredentials: true });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`, // Send token in Authorization header
+                }
+            });
             return response.data.isAuthenticated;
         } catch (err) {
             setError('Failed to check authentication status.');
@@ -92,12 +102,18 @@ const ChangePassword = () => {
             return;
         }
 
+        const token = localStorage.getItem('token'); // Get the token from local storage
+
         try {
             // Call the API to update the password
             const response = await axios.put(
                 `${process.env.REACT_APP_API_URL}/account/update-password`,
                 { currentPassword, newPassword },
-                { withCredentials: true } // Ensure cookies are sent with the request
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`, // Send token in Authorization header
+                    }
+                }
             );
 
             if (response.status === 200) {
