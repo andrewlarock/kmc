@@ -24,6 +24,7 @@ const AuthProvider = ({ children }) => {
 
         if (response.data.isAuthenticated) {
           setIsAuthenticated(true);
+          console.log('Name: ', userName)
           setUserName(response.data.name);
           setUserEmail(response.data.email);
         } else {
