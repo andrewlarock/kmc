@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from 'react';
-import * as jwt_decode from 'jwt-decode';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -9,96 +8,89 @@ const AuthProvider = ({ children }) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [loading, setLoading] = useState(true); // Add loading state
-  const [userActive, setUserActive] = useState(false); // Use state for user activity
-
-  const isTokenExpired = (token) => {
-    const decodedToken = jwt_decode(token);
-    return decodedToken.exp < Date.now() / 1000;
-  };
+  let userActive = false; // Track user activity
 
   // Function to check if the user is authenticated using the token from localStorage
   const checkAuthentication = async () => {
-    setLoading(true); // Set loading true at the beginning
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token'); // Get the token from localStorage
 
     if (token) {
-      if (isTokenExpired(token)) {
-        // Handle expired token
-        setIsAuthenticated(false);
-        setUserName('');
-        setUserEmail('');
-      } else {
-        try {
-          const decodedToken = jwt_decode(token);
-          setUserName(decodedToken.name);
-          setUserEmail(decodedToken.email);
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in the headers
+          },
+        });
 
-          const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-token`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-
-          if (response.data.isAuthenticated) {
-            setIsAuthenticated(true);
-          } else {
-            setIsAuthenticated(false);
-            setUserName('');
-            setUserEmail('');
-          }
-        } catch (error) {
-          console.error('Error checking authentication:', error.message);
+        if (response.data.isAuthenticated) {
+          setIsAuthenticated(true);
+          setUserName(response.data.name);
+          setUserEmail(response.data.email);
+        } else {
           setIsAuthenticated(false);
           setUserName('');
           setUserEmail('');
         }
+      } catch (error) {
+        setIsAuthenticated(false);
+        setUserName('');
+        setUserEmail('');
+        console.error('Error checking authentication:', error.message);
       }
     } else {
       setIsAuthenticated(false);
     }
-    setLoading(false); // Set loading to false after processing
+
+    setLoading(false); 
   };
 
   // Function to refresh the token only when the user is active
   const refreshToken = async () => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token'); // Get the token from localStorage
 
     if (userActive && token) {
       try {
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/refresh-token`, {}, {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in the headers
+          },
         });
 
         const newToken = response.data.token;
-        localStorage.setItem('token', newToken);
+        localStorage.setItem('token', newToken); // Update the token in localStorage
+        console.log('Token refreshed');
       } catch (error) {
         console.error('Error refreshing token:', error.message);
       }
     }
   };
 
-  // useEffect to manage checking authentication and refreshing tokens
-  useEffect(() => {
-    checkAuthentication();
+  const setUserActive = () => {
+    userActive = true;
+  };
 
+  useEffect(() => {
+    checkAuthentication(); // Check authentication on component mount
+
+    // Refresh token every 15 minutes ONLY if the user is active
     const intervalId = setInterval(() => {
       refreshToken();
-      setUserActive(false); // Reset user activity after each refresh
-    }, 15 * 60 * 1000); // Refresh token every 15 minutes
-
-    const setUserActiveEvent = () => setUserActive(true); // Update user active state
+      userActive = false; // Reset user activity after each refresh
+    }, 15 * 60 * 1000);
 
     // Listen for user activity events
-    window.addEventListener('click', setUserActiveEvent);
-    window.addEventListener('keypress', setUserActiveEvent);
-    window.addEventListener('mousemove', setUserActiveEvent);
+    window.addEventListener('click', setUserActive);
+    window.addEventListener('keypress', setUserActive);
+    window.addEventListener('mousemove', setUserActive);
 
     return () => {
       clearInterval(intervalId);
-      window.removeEventListener('click', setUserActiveEvent);
-      window.removeEventListener('keypress', setUserActiveEvent);
-      window.removeEventListener('mousemove', setUserActiveEvent);
+      window.removeEventListener('click', setUserActive);
+      window.removeEventListener('keypress', setUserActive);
+      window.removeEventListener('mousemove', setUserActive);
     };
   }, []);
-
+  
   return (
     <AuthContext.Provider value={{ isAuthenticated, userName, userEmail, loading, setIsAuthenticated, setUserName, setUserEmail }}>
       {children}
