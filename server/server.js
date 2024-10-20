@@ -448,37 +448,42 @@ app.post('/bookmark/add', authenticateToken, async (req, res) => {
   const { universityId, courseId } = req.body;
   const userId = req.user.userId;
 
-  try {
-    // Fetch current bookmarks for the user as a string
-    const result = await pool.query(
-      'SELECT bookmarks FROM users WHERE id = $1',
-      [userId]
-    );
+  console.log('User ID:', userId);
+  console.log('University ID:', universityId);
+  console.log('Course ID:', courseId);
 
-    let bookmarks = result.rows[0].bookmarks || ''; // Treat as a string
+  try {
+    // Fetch current bookmarks for the user
+    const result = await pool.query('SELECT bookmarks FROM users WHERE id = $1', [userId]);
+    console.log('Database result:', result.rows);
+
+    let bookmarks = result.rows[0].bookmarks || ''; // Handle NULL case by setting to empty string
+    console.log('Initial bookmarks:', bookmarks);
+
     const newBookmark = `${universityId}:${courseId}`;
+    console.log('New bookmark to add/remove:', newBookmark);
 
     // Check if the bookmark already exists in the string
     if (bookmarks.includes(newBookmark)) {
+      console.log('Bookmark already exists. Removing bookmark...');
+
       // Remove the bookmark if it exists
       const bookmarkArray = bookmarks.split(',').filter(bookmark => bookmark !== newBookmark);
       bookmarks = bookmarkArray.join(',');
+      console.log('Updated bookmarks after removal:', bookmarks);
 
-      await pool.query(
-        'UPDATE users SET bookmarks = $1 WHERE id = $2',
-        [bookmarks, userId]
-      );
+      await pool.query('UPDATE users SET bookmarks = $1 WHERE id = $2', [bookmarks, userId]);
+      console.log('Bookmark removed successfully from the database.');
 
       return res.status(205).json({ message: 'Bookmark removed successfully' });
     }
 
     // Add the new bookmark, append to the string
     bookmarks = bookmarks ? `${bookmarks},${newBookmark}` : newBookmark;
+    console.log('Updated bookmarks after addition:', bookmarks);
 
-    await pool.query(
-      'UPDATE users SET bookmarks = $1 WHERE id = $2',
-      [bookmarks, userId]
-    );
+    await pool.query('UPDATE users SET bookmarks = $1 WHERE id = $2', [bookmarks, userId]);
+    console.log('Bookmark added successfully to the database.');
 
     return res.status(200).json({ message: 'Bookmark added successfully' });
   } catch (error) {
@@ -490,24 +495,26 @@ app.post('/bookmark/add', authenticateToken, async (req, res) => {
 // Retrieve the user's bookmarks endpoint
 app.get('/bookmark', authenticateToken, async (req, res) => {
   const userId = req.user.userId;
+  console.log('User ID:', userId);
 
   try {
     // Get the user's bookmarks as a string
-    const result = await pool.query(
-      'SELECT bookmarks FROM users WHERE id = $1',
-      [userId]
-    );
+    const result = await pool.query('SELECT bookmarks FROM users WHERE id = $1', [userId]);
+    console.log('Database result:', result.rows);
 
-    let bookmarks = result.rows[0].bookmarks || ''; // Treat as a string, not array
+    let bookmarks = result.rows[0].bookmarks || ''; // Handle NULL by treating it as an empty string
+    console.log('Bookmarks retrieved from database:', bookmarks);
 
     // If there are bookmarks, split them into an array; otherwise, keep it empty
     const bookmarkArray = bookmarks ? bookmarks.split(',') : [];
+    console.log('Bookmark array after splitting:', bookmarkArray);
 
     // Format bookmarks into an array of objects
     const formattedBookmarks = bookmarkArray.map(bookmark => {
       const [universityId, courseId] = bookmark.split(':');
       return { universityId, courseId };
     });
+    console.log('Formatted bookmarks:', formattedBookmarks);
 
     return res.status(200).json(formattedBookmarks);
   } catch (error) {
