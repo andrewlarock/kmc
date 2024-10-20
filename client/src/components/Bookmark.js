@@ -49,23 +49,28 @@ const Bookmark = ({ university_id, course_id, fetchBookmarks}) => {
     }, [course_id]);
 
     const handleBookmark = async (event) => {
-        event.stopPropagation(); // Prevent the event from bubbling up
-        try {
-          const response = await axios.post(`${process.env.REACT_APP_API_URL}/bookmark/add`, {
+      event.stopPropagation();
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}/bookmark/add`,
+          {
             universityId: university_id,
             courseId: course_id,
-          }, {
-            withCredentials: true
-          });
-
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`, // Send token in headers
+            },
+          }
+        );
+    
         if (response.status === 205) {
-            fetchBookmarks(); // Re-fetch bookmarks from parent component
+          fetchBookmarks(); // Re-fetch bookmarks from parent component
         }
-
-        } catch (error) {
-          console.error('Error handling bookmark:', error);
-        }
-      };
+      } catch (error) {
+        console.error('Error handling bookmark:', error);
+      }
+    };
 
     return (
         <div className="bookmark-container">
