@@ -218,20 +218,20 @@ app.get('/reviews', async (req, res) => {
 app.post('/reviews', async (req, res) => {
   let { university_id, course_id, professor, CC, CN, difficulty, workload, enjoyment, recommended, review, tags, timestamp } = req.body;
 
-  // Use sanitize-html to sanitize review input
+  // Sanitize professor input
   professor = sanitizeHtml(professor, {
     allowedTags: [], // No HTML tags allowed
     allowedAttributes: {}, // No attributes allowed
   });
 
+  // Sanitize review input
   review = sanitizeHtml(review, {
     allowedTags: [], // No HTML tags allowed
     allowedAttributes: {}, // No attributes allowed
-    textFilter: function(text) {
-      // Optionally allow additional filtering of text
-      return text.replace(/&/g, '&').replace(/'/g, "'");
-    },
   });
+
+  // Replace &amp; back to &
+  review = review.replace(/&amp;/g, '&'); 
 
   try {
     await pool.query(
