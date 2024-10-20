@@ -444,25 +444,25 @@ app.delete('/account/delete', authenticateToken, async (req, res) => {
 });
 
 // Add bookmark endpoint
-
 app.post('/bookmark/add', authenticateToken, async (req, res) => {
   const { universityId, courseId } = req.body;
   const userId = req.user.userId;
 
   try {
-    // Fetch current bookmarks for the user
+    // Fetch current bookmarks for the user as a string
     const result = await pool.query(
       'SELECT bookmarks FROM users WHERE id = $1',
       [userId]
     );
-    let bookmarks = result.rows[0].bookmarks || [];
 
+    let bookmarks = result.rows[0].bookmarks || ''; // Treat as a string
     const newBookmark = `${universityId}:${courseId}`;
 
-    // Check if the bookmark already exists
+    // Check if the bookmark already exists in the string
     if (bookmarks.includes(newBookmark)) {
       // Remove the bookmark if it exists
-      bookmarks = bookmarks.filter(bookmark => bookmark !== newBookmark);
+      const bookmarkArray = bookmarks.split(',').filter(bookmark => bookmark !== newBookmark);
+      bookmarks = bookmarkArray.join(',');
 
       await pool.query(
         'UPDATE users SET bookmarks = $1 WHERE id = $2',
@@ -472,8 +472,8 @@ app.post('/bookmark/add', authenticateToken, async (req, res) => {
       return res.status(205).json({ message: 'Bookmark removed successfully' });
     }
 
-    // Add the new bookmark
-    bookmarks = [...bookmarks, newBookmark];
+    // Add the new bookmark, append to the string
+    bookmarks = bookmarks ? `${bookmarks},${newBookmark}` : newBookmark;
 
     await pool.query(
       'UPDATE users SET bookmarks = $1 WHERE id = $2',
@@ -487,27 +487,32 @@ app.post('/bookmark/add', authenticateToken, async (req, res) => {
   }
 });
 
+// Retrieve the user's bookmarks endpoint
 app.get('/bookmark', authenticateToken, async (req, res) => {
   const userId = req.user.userId;
 
   try {
-      // Get the user's bookmarks
-      const result = await pool.query(
-          'SELECT bookmarks FROM users WHERE id = $1',
-          [userId]
-      );
-      const bookmarks = result.rows[0].bookmarks || [];
-      
-      // Format bookmarks into an array of objects
-      const formattedBookmarks = bookmarks.map(bookmark => {
-          const [universityId, courseId] = bookmark.split(':');
-          return { universityId, courseId };
-      });
+    // Get the user's bookmarks as a string
+    const result = await pool.query(
+      'SELECT bookmarks FROM users WHERE id = $1',
+      [userId]
+    );
 
-      return res.status(200).json(formattedBookmarks);
+    let bookmarks = result.rows[0].bookmarks || ''; // Treat as a string, not array
+
+    // If there are bookmarks, split them into an array; otherwise, keep it empty
+    const bookmarkArray = bookmarks ? bookmarks.split(',') : [];
+
+    // Format bookmarks into an array of objects
+    const formattedBookmarks = bookmarkArray.map(bookmark => {
+      const [universityId, courseId] = bookmark.split(':');
+      return { universityId, courseId };
+    });
+
+    return res.status(200).json(formattedBookmarks);
   } catch (error) {
-      console.error('Error retrieving bookmarks:', error);
-      return res.status(500).send('Server error');
+    console.error('Error retrieving bookmarks:', error);
+    return res.status(500).send('Server error');
   }
 });
 
