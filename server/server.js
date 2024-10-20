@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt'); // bcrypt for password hashing
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser'); // Add cookie-parser to handle cookies
 const { encode } = require('html-entities');
+const sanitizeHtml = require('sanitize-html');
 const validator = require('validator');
 require('dotenv').config();
 
@@ -213,11 +214,24 @@ app.get('/reviews', async (req, res) => {
   }
 });
 
-// Create review endpoint
+// Create review endpoint 
 app.post('/reviews', async (req, res) => {
   let { university_id, course_id, professor, CC, CN, difficulty, workload, enjoyment, recommended, review, tags, timestamp } = req.body;
-  professor = encode(professor);
-  review = encode(review);
+
+  // Use sanitize-html to sanitize review input
+  professor = sanitizeHtml(professor, {
+    allowedTags: [], // No HTML tags allowed
+    allowedAttributes: {}, // No attributes allowed
+  });
+
+  review = sanitizeHtml(review, {
+    allowedTags: [], // No HTML tags allowed
+    allowedAttributes: {}, // No attributes allowed
+    textFilter: function(text) {
+      // Optionally allow additional filtering of text
+      return text.replace(/&/g, '&').replace(/'/g, "'");
+    },
+  });
 
   try {
     await pool.query(
