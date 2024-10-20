@@ -197,13 +197,22 @@ const CoursePage = () => {
       return;
     }
   
+    // Get the token from localStorage
+    const token = localStorage.getItem('authToken'); // Adjust the key as needed
+  
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/bookmark/add`, {
-        universityId: id, // Use id from useParams
-        courseId: courseId, // Use courseId from useParams
-      }, {
-        withCredentials: true // Ensure cookies are sent with the request
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/bookmark/add`,
+        {
+          universityId: id, // Use id from useParams
+          courseId: courseId, // Use courseId from useParams
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}` // Attach the token in the Authorization header
+          }
+        }
+      );
   
       if (response.status === 200) {
         handleFeedback('Bookmark added!');
