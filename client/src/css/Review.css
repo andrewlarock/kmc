@@ -77,7 +77,7 @@
 .review-top-text {
     font-family: 'Montserrat', sans-serif;
     font-weight: 450; 
-    font-size: clamp(11px, 1.4vw, 17px);
+    font-size: clamp(12px, 1.6vw, 17px);
     color: #242E34;
     margin-left: clamp(1rem, 4vw, 2rem);
     margin-top: 1rem;
@@ -89,11 +89,11 @@
 }
 
 .professor-name {
-    font-size: clamp(11px, 1.4vw, 17px); 
+    font-size: clamp(12px, 1.5vw, 17px); 
 }
 
 .professor-name-small {
-    font-size: clamp(10px, 1.4vw, 14px); 
+    font-size: clamp(10px, 1.5vw, 14px); 
 }
 
 .review-timestamp {
@@ -109,7 +109,7 @@
 .review-review {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500; 
-    font-size: clamp(11px, .95vw, 14px);
+    font-size: clamp(12px, .95vw, 14px);
     color: #242E34;
     margin-top: .8rem;
     line-height: 1.45;
