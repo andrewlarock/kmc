@@ -198,7 +198,9 @@ const CoursePage = () => {
     }
   
     // Get the token from localStorage
-    const token = localStorage.getItem('authToken'); // Adjust the key as needed
+    const token = localStorage.getItem('token'); // Adjust the key as needed
+
+    console.log(id, courseId)
   
     try {
       const response = await axios.post(
