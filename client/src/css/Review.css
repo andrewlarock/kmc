@@ -109,7 +109,7 @@
 .review-review {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500; 
-    font-size: clamp(12px, .95vw, 14px);
+    font-size: clamp(11px, .95vw, 14px);
     color: #242E34;
     margin-top: .8rem;
     line-height: 1.45;
