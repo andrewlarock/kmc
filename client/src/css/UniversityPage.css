@@ -410,10 +410,8 @@
     }
 
     .university-reviews-header-left {
-        border: 1px solid #000;
         display: flex;
         justify-content: flex-end;
-        width: 35%;
     }
 
     .university-reviews-header-left img {
@@ -421,12 +419,10 @@
     }
 
     .university-reviews-header-right {
-        border: 1px solid #000;
         color: #36454f;
         font-family: Montserrat, sans-serif;
         font-size: 15px;
         font-weight: 500;
-        padding-top: 10px;
         text-align: left;
         width: 65%;
     }
