@@ -382,10 +382,12 @@
 
 .university-reviews-header-left {
     width: 40%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .university-reviews-header-left img {
-    width: 75%; 
+    height: 40px; 
     margin-right: .35rem;
 }
 
