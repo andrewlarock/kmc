@@ -460,7 +460,7 @@ const CoursePage = () => {
                 <span className="tooltip-text">Add to Bookmarks</span> {/* Tooltip text */}
               </div>
             </div>
-            <div className='course-name-subheader'>
+            <div className='course-name-subheader' onClick={() => navigate(`/university/${id}`)} style={{ cursor: 'pointer' }}>
               {formattedName}
             </div>
           </div>
@@ -649,7 +649,7 @@ const CoursePage = () => {
               />
             </div>
           </div>
-          <div className='course-name-subheader-m'>
+          <div className='course-name-subheader-m' onClick={() => navigate(`/university/${id}`)} style={{ cursor: 'pointer' }}>
             {formattedName}
           </div>
         </div>
