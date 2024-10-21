@@ -445,6 +445,11 @@
     transition: opacity 0.3s;
 }
 
+.tooltip-m:hover .tooltip-text-m {
+    visibility: visible;
+    opacity: 1; 
+}
+
 .tooltip-score-m {
     position: relative;
     display: inline-block;
@@ -470,7 +475,7 @@
     transition: opacity 0.3s;
 }
 
-.tooltip-m:hover .tooltip-text-m {
+.tooltip-score-m:hover .tooltip-text-score-m {
     visibility: visible;
     opacity: 1; 
 }
