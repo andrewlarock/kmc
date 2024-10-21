@@ -470,6 +470,11 @@
     transition: opacity 0.3s;
 }
 
+.tooltip-m:hover .tooltip-text-m {
+    visibility: visible;
+    opacity: 1; 
+}
+
 .divider-line-m {
     width: 100%;
     height: 4px;
