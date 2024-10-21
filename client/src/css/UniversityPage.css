@@ -374,21 +374,23 @@
 }
 
 .university-reviews-header-container {
-    width:  clamp(29rem, 75vw, 52rem);
+    width: clamp(29rem, 75vw, 52rem);
     display: flex;
-    margin-left: 7.5%;
-    margin-bottom: 1rem;
+    justify-content: center;
+    align-items: center; 
+    margin: 0 auto 1rem auto;
+    gap: 1rem;
 }
 
 .university-reviews-header-left {
     width: 35%;
     display: flex;
     justify-content: flex-end;
+    border: 1px solid black;
 }
 
 .university-reviews-header-left img {
     height: 40px; 
-    margin-right: .35rem;
 }
 
 .university-reviews-header-right {
@@ -398,4 +400,6 @@
     font-size: 15px;
     color: #36454F;
     text-align: left;
+    padding-top: 10px;
+    border: 1px solid black;
 }
