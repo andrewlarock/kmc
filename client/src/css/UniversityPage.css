@@ -374,14 +374,14 @@
 }
 
 .university-reviews-header-container {
-    width: 85%;
+    width:  clamp(29rem, 75vw, 52rem);
     display: flex;
     margin-left: 7.5%;
     margin-bottom: 1rem;
 }
 
 .university-reviews-header-left {
-    width: 40%;
+    width: 35%;
     display: flex;
     justify-content: flex-end;
 }
@@ -392,7 +392,7 @@
 }
 
 .university-reviews-header-right {
-    width: 60%;
+    width: 65%;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500; 
     font-size: 15px;
