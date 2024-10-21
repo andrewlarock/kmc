@@ -533,9 +533,16 @@ const CoursePage = () => {
               </div>
         </div>
 
-        <div className='coursepage-reviews-header'>
-          <img src={require('../css/images/logo.png')} alt="Icon 1"/> 
-            reviews from all students for <b>&nbsp;{reviewCC}{reviewCN}&nbsp;</b>at&nbsp;<b> {formattedName}</b>:
+        <div className='course-reviews-header-container'>
+
+          <div className='course-reviews-header-left'>
+            <img src={require('../css/images/logo.png')} alt="Logo"/>
+          </div>
+
+          <div className='course-reviews-header-right'>
+            reviews from students at <b>{formattedName}&nbsp;</b>for<b> all courses</b>:
+          </div>
+
         </div>
 
         <div className='course-button-container'>
