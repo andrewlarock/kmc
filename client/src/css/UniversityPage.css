@@ -378,15 +378,13 @@
     display: flex;
     justify-content: center;
     align-items: center; 
-    margin: 0 auto 1rem auto;
-    gap: 1rem;
+    margin: 0 auto .5rem auto;
+    gap: .5rem;
 }
 
 .university-reviews-header-left {
-    width: 35%;
     display: flex;
     justify-content: flex-end;
-    border: 1px solid black;
 }
 
 .university-reviews-header-left img {
@@ -394,12 +392,42 @@
 }
 
 .university-reviews-header-right {
-    width: 65%;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500; 
     font-size: 15px;
     color: #36454F;
     text-align: left;
-    padding-top: 10px;
-    border: 1px solid black;
+}
+
+@media (max-width: 750px) {
+    .university-reviews-header-container {
+        align-items: center;
+        display: flex;
+        gap: .5rem;
+        justify-content: center;
+        margin: 0 auto .5rem;
+        width: clamp(29rem, 75vw, 52rem);
+    }
+
+    .university-reviews-header-left {
+        border: 1px solid #000;
+        display: flex;
+        justify-content: flex-end;
+        width: 35%;
+    }
+
+    .university-reviews-header-left img {
+        height: 40px;
+    }
+
+    .university-reviews-header-right {
+        border: 1px solid #000;
+        color: #36454f;
+        font-family: Montserrat, sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        padding-top: 10px;
+        text-align: left;
+        width: 65%;
+    }
 }
