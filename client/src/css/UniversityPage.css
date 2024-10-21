@@ -372,3 +372,28 @@
     90% { opacity: 1; }
     100% { opacity: 0; }
 }
+
+.university-reviews-header-container {
+    width: 85%;
+    display: flex;
+    margin-left: 7.5%;
+    margin-bottom: 1rem;
+}
+
+.university-reviews-header-left {
+    width: 40%;
+}
+
+.university-reviews-header-left img {
+    width: 75%; 
+    margin-right: .35rem;
+}
+
+.university-reviews-header-right {
+    width: 60%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    font-size: 15px;
+    color: #36454F;
+    text-align: left;
+}
