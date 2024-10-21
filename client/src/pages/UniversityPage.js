@@ -292,9 +292,16 @@ const UniversityPage = () => {
             </div>
           )}
 
-        <div className='university-reviews-header'>
-          <img src={require('../css/images/logo.png')} alt="Logo"/> 
-            reviews from students at <b>&nbsp;{formattedName}&nbsp;</b>for&nbsp;<b> all courses</b>:
+        <div className='university-reviews-header-container'>
+
+          <div className='university-reviews-header-left'>
+            <img src={require('../css/images/logo.png')} alt="Logo"/>
+          </div>
+
+          <div className='university-reviews-header-right'>
+            reviews from students at <b>{formattedName}&nbsp;</b>for<b> all courses</b>:
+          </div>
+
         </div>
 
         <div className='university-button-container'>

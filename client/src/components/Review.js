@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Review = ({ id, university_id, course_id, professor, code, number, difficulty, workload, enjoyment, recommend, text, tags, timestamp }) => {
     const navigate = useNavigate();
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 625);
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 475);
 
     // Parse the tags string into an array because we had to change how the database handles tags with deployment
     let tagArray;
@@ -35,7 +35,7 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
     useEffect(() => {
         // Event listener to detect screen resizing
         const handleResize = () => {
-          setIsDesktop(window.innerWidth >= 625); // Update state based on screen size
+          setIsDesktop(window.innerWidth >= 475); // Update state based on screen size
         };
     
         window.addEventListener('resize', handleResize);
