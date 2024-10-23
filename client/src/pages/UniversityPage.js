@@ -14,7 +14,7 @@ const UniversityPage = () => {
   const [reviews, setReviews] = useState([]);
   const [input, setInput] = useState('');
   const navigate = useNavigate();
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 700);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 950);
 
   const [showFilter, setShowFilter] = useState(false);
   const [sortOption, setSortOption] = useState('noFilter'); // State for sorting option
@@ -29,7 +29,7 @@ const UniversityPage = () => {
   useEffect(() => {
     // Event listener to detect screen resizing
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 700); // Update state based on screen size
+      setIsDesktop(window.innerWidth >= 950); // Update state based on screen size
     };
 
     window.addEventListener('resize', handleResize);
