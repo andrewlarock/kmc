@@ -23,8 +23,8 @@ const UniversityPage = () => {
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const [feedback, setFeedback] = useState(false);
-  const [feedbackMessage, setFeedbackMessage] = useState('')
+  const [feedbackU, setFeedbackU] = useState(false);
+  const [feedbackMessageU, setFeedbackMessageU] = useState('')
 
   useEffect(() => {
     // Event listener to detect screen resizing
@@ -175,11 +175,11 @@ const UniversityPage = () => {
 
   // Function to handle setting feedback error message
   const handleFeedback = (message) => {
-    setFeedback(true);
-    setFeedbackMessage(message);
+    setFeedbackU(true);
+    setFeedbackMessageU(message);
     setTimeout(() => {
-      setFeedback(false);
-      setFeedbackMessage('');
+      setFeedbackU(false);
+      setFeedbackMessageU('');
     }, 7000); // Hide after 7 seconds
   };
 
@@ -286,9 +286,9 @@ const UniversityPage = () => {
           </div>
 
           {/* Popup Message */}
-          {feedback && (
-            <div className="popup-message">
-              {feedbackMessage}
+          {feedbackU && (
+            <div className="university-popup-message">
+              {feedbackMessageU}
             </div>
           )}
 
@@ -425,9 +425,9 @@ const UniversityPage = () => {
         </div>
 
         {/* Popup Message */}
-        {feedback && (
-          <div className="popup-message-m">
-            {feedbackMessage}
+        {feedbackU && (
+          <div className="university-popup-message-m">
+            {feedbackMessageU}
           </div>
         )}
 
