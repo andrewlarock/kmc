@@ -180,7 +180,7 @@ const UniversityPage = () => {
     setTimeout(() => {
       setFeedback(false);
       setFeedbackMessage('');
-    }, 4000); // Hide after 4 seconds
+    }, 7000); // Hide after 7 seconds
   };
 
   if (error) {
@@ -395,6 +395,7 @@ const UniversityPage = () => {
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 handleCourseSelection(input);
+                e.target.blur(); // Dismiss the keyboard
               }
             }}
           />
