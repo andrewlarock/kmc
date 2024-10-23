@@ -344,22 +344,22 @@ const UniversityPage = () => {
         </div>
 
         <div className='reviews-container'>
-          {reviewsToDisplay.map((reviews, index) => (
+          {reviewsToDisplay.map((review, index) => (
             <Review
               key={index}
-              id={reviews.id}
-              university_id={reviews.university_id}
-              course_id={reviews.course_id}
-              professor={reviews.professor}
-              code={reviews.cc}
-              number={reviews.cn}
-              difficulty={reviews.difficulty}
-              workload={reviews.workload}
-              enjoyment={reviews.enjoyment}
-              recommend={reviews.recommended}
-              reviewText={reviews.review}
-              tags={reviews.tags}
-              timestamp={reviews.timestamp}
+              id={review.id}
+              university_id={review.university_id}
+              course_id={review.course_id}
+              professor={review.professor}
+              code={review.cc}
+              number={review.cn}
+              difficulty={review.difficulty}
+              workload={review.workload}
+              enjoyment={review.enjoyment}
+              recommend={review.recommended}
+              text={review.review}
+              tags={review.tags}
+              timestamp={review.timestamp}
             />
           ))}
         </div>
