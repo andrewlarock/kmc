@@ -172,36 +172,10 @@ body {
     color: #ffffff; 
 }
 
-.rating-container-m .rating-box-m:nth-child(1):hover { background-color: #628B73; }
-.rating-container-m .rating-box-m:nth-child(2):hover { background-color: #628B73; }
-.rating-container-m .rating-box-m:nth-child(3):hover { background-color: #93cdab; }
-.rating-container-m .rating-box-m:nth-child(4):hover { background-color: #93cdab; }
-.rating-container-m .rating-box-m:nth-child(5):hover { background-color: #9A9A9A; }
-.rating-container-m .rating-box-m:nth-child(6):hover { background-color: #9A9A9A; }
-.rating-container-m .rating-box-m:nth-child(7):hover { background-color: #A89092; }
-.rating-container-m .rating-box-m:nth-child(8):hover { background-color: #A89092; }
-.rating-container-m .rating-box-m:nth-child(9):hover { background-color: #81686a; }
-.rating-container-m .rating-box-m:nth-child(10):hover { background-color: #81686a; }
-
-.rating-container-m .enjoyment-rating-box-m:nth-child(1):hover { background-color: #81686a; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(2):hover { background-color: #81686a; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(3):hover { background-color: #A89092; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(4):hover { background-color: #A89092; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(5):hover { background-color: #9A9A9A; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(6):hover { background-color: #9A9A9A; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(7):hover { background-color: #93cdab; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(8):hover { background-color: #93cdab; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(9):hover { background-color: #628B73; }
-.rating-container-m .enjoyment-rating-box-m:nth-child(10):hover { background-color: #628B73; }
-
 .rating-container-m .rating-box-m:nth-child(1) { border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
 .rating-container-m .rating-box-m:nth-child(10) { border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
 .rating-container-m .enjoyment-rating-box-m:nth-child(1) { border-top-left-radius: 8px; border-bottom-left-radius: 8px;}
 .rating-container-m .enjoyment-rating-box-m:nth-child(10) { border-top-right-radius: 8px; border-bottom-right-radius: 8px;}
-
-.rating-box-m.selected:hover {
-    background-color: #36454F; 
-}
 
 .recommendation-input-m {
     display: flex;

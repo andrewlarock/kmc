@@ -16,7 +16,7 @@ app.use(cookieParser()); // Enable cookie parsing
 
 // CORS configuration to allow specific origin and credentials
 const corsOptions = {
-  origin: 'https://bespoke-kataifi-e2f4d5.netlify.app', // front-end URL
+  origin: ['https://kickmycourse.com', 'https://bespoke-kataifi-e2f4d5.netlify.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   credentials: true, // If you're using cookies for authentication
 };
@@ -36,7 +36,7 @@ const authenticateToken = (req, res, next) => {
     return res.status(200).json({ isAuthenticated: false, message: 'No token provided' });
   }
 
-  jwt.verify(token, 'your_jwt_secret', (err, user) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) {
       return res.status(200).json({ isAuthenticated: false, message: 'Invalid token' });
     }
@@ -60,7 +60,7 @@ app.post('/auth/refresh-token', authenticateToken, (req, res) => {
 
   const newToken = jwt.sign(
     { userId, email, name },
-    'your_jwt_secret',
+    process.env.JWT_SECRET,
     { expiresIn: '1h' }
   );
 
@@ -87,7 +87,7 @@ app.post('/login', async (req, res) => {
 
     const token = jwt.sign(
       { userId: user.id, email: user.email, name: user.name },
-      'your_jwt_secret',
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 
@@ -120,7 +120,7 @@ app.post('/signup', async (req, res) => {
 
     const token = jwt.sign(
       { userId: newUser.rows[0].id, email: newUser.rows[0].email, name: newUser.rows[0].name },
-      'your_jwt_secret',
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 
@@ -356,7 +356,7 @@ app.put('/account/update-email', authenticateToken, async (req, res) => {
     // Generate a new JWT token with the updated email
     const newToken = jwt.sign(
       { userId, email: newEmail, name: req.user.name }, // Include the updated email
-      'your_jwt_secret',
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 
@@ -419,7 +419,7 @@ app.put('/account/update-name', authenticateToken, async (req, res) => {
     // Generate a new JWT token with the updated name
     const newToken = jwt.sign(
       { userId, email: req.user.email, name: newName }, // Include the updated name
-      'your_jwt_secret',
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 
