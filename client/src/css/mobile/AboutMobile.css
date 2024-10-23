@@ -81,7 +81,7 @@
 }
 
 .about-search-bar-m {
-    width: 85%;
+    width: 75%;
     height: 65px;
     padding: 0.5rem 1rem;
     padding-left: 70px;
@@ -97,7 +97,6 @@
     background-repeat: no-repeat;
     background-position: 35px center;
     background-size: 15px 15px;
-    margin-left: -21px;
 }
 
 .about-search-bar-m::placeholder {

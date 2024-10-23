@@ -174,9 +174,9 @@ const UniversityPage = () => {
   };
 
   // Function to handle setting feedback error message
-  const handleFeedback = (error) => {
+  const handleFeedback = (message) => {
     setFeedback(true);
-    setFeedbackMessage(error);
+    setFeedbackMessage(message);
     setTimeout(() => {
       setFeedback(false);
       setFeedbackMessage('');
