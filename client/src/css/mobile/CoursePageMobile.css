@@ -410,7 +410,7 @@
     padding: 8px 15px;
     border-radius: 5px;
     z-index: 1000;
-    animation: fadeInOut 3s forwards;
+    animation: fadeInOut 1.5s forwards;
 }
   
 @keyframes fadeInOut {
