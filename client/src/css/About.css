@@ -115,6 +115,12 @@
     box-shadow: none; 
 }
 
+.about-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .catalog-image {
     width: clamp(15rem, 75vw, 50rem);
     margin-top: 1rem;
