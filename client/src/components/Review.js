@@ -53,7 +53,7 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
 
     // Function to handle the flagging of a review
     const handleFlagClick = async () => {
-        const userConfirmed = window.confirm('Are you sure you want to flag this review? Flagging indicates that this review may violate our community guidelines. You can review the guidelines at: http://localhost:5000/review-form/guidelines.');
+        const userConfirmed = window.confirm('Are you sure you want to flag this review? Flagging indicates that this review may violate our community guidelines. You can review the guidelines at: kickmycourse.com/review-form/guidelines.');
         
         if (userConfirmed) {
             try {
