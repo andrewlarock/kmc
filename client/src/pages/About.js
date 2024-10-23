@@ -74,7 +74,7 @@ const About = () => {
           <div className="about-search-container">
             <input
                 type="text"
-                placeholder="Find a class (e.g., CSE116 or MATH341)"
+                placeholder="Find a class (e.g., CSE116)"
                 className='about-search-bar'
                 readOnly
             />
@@ -221,7 +221,7 @@ const About = () => {
         <div className="about-search-container-m">
           <input
               type="text"
-              placeholder="Find a class (e.g., CSE116 or MATH341)"
+              placeholder="Find a class (e.g., CSE116)"
               className='about-search-bar-m'
               readOnly
           />
