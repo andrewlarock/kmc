@@ -5,7 +5,7 @@ import Tag from './Tag';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Review = ({ id, university_id, course_id, professor, code, number, difficulty, workload, enjoyment, recommend, text, tags, timestamp }) => {
+const Review = ({ id, university_id, course_id, professor, code, number, difficulty, workload, enjoyment, recommend, reviewText, tags, timestamp }) => {
     const navigate = useNavigate();
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 475);
 
@@ -181,7 +181,7 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
 
                 <div className='review-middle'>
                     <div className='review-review'>
-                        {text}
+                        {reviewText}
                     </div>
                 </div>
 
@@ -277,7 +277,7 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
 
             <div className='review-middle-m'>
                 <div className='review-review-m'>
-                    {text}
+                    {reviewText}
                 </div>
             </div>
 
