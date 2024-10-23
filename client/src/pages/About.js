@@ -93,7 +93,9 @@ const About = () => {
             </ul>
             If you're unsure of the exact course code and number, refer to your university’s course catalog for accurate information:
           </div>
-          <img src={require('../css/images/catalog.png')} alt="Catalog" className="catalog-image" />
+          <div className='about-image-container'>
+            <img src={require('../css/images/catalog.png')} alt="Catalog" className="catalog-image" />
+          </div>
           <div className='about-info-stext' style={{ textAlign: 'left' }}>
             When searching for a specific class, it’s important to only use the <b>course code</b> and <b>course number</b>. Some schools may include additional information after the course number, such as "LR," "LAB," or other designations, like in the example above.
             In these cases, make sure to leave out the extra designations (like "LR" or "LAB") when typing the course into the search bar. For example, to search for PHY 107LR, you would simply enter PHY 107. The only required format is the course code (e.g., PHY) followed by the course number (e.g., 107). If the class is a lab-designated class, add the "Lab Required" tag to your review to help other students identify that the course involves lab work.
@@ -238,7 +240,9 @@ const About = () => {
           </ul>
           If you're unsure of the exact course code and number, refer to your university’s course catalog for accurate information:
         </div>
-        <img src={require('../css/images/catalog.png')} alt="Catalog" className="catalog-image-m" />
+        <div className='about-image-container-m'>
+          <img src={require('../css/images/catalog.png')} alt="Catalog" className="catalog-image-m" />
+        </div>
         <div className='about-info-stext-m' style={{ textAlign: 'left' }}>
           When searching for a specific class, it’s important to only use the <b>course code</b> and <b>course number</b>. Some schools may include additional information after the course number, such as "LR," "LAB," or other designations, like in the example above.
           In these cases, make sure to leave out the extra designations (like "LR" or "LAB") when typing the course into the search bar. For example, to search for PHY 107LR, you would simply enter PHY 107. The only required format is the course code (e.g., PHY) followed by the course number (e.g., 107). If the class is a lab-designated class, add the "Lab Required" tag to your review to help other students identify that the course involves lab work.
