@@ -89,7 +89,6 @@ const SignupPage = () => {
     };
 
     const handleSignup = async () => {
-        // Validate inputs before making the request
         if (!validateInputs()) {
             return; // Stop the signup process if validation fails
         }
@@ -102,27 +101,31 @@ const SignupPage = () => {
                 name 
             });
     
-            // If signup is successful, response should contain the JWT token
-            const { token, name, email: responseEmail} = response.data;
+            // Check if response has data and token
+            if (response && response.data && response.data.token) {
+                const { token, name, email: responseEmail } = response.data;
+                
+                // Store the token in localStorage
+                localStorage.setItem('token', token);
     
-            // Store the token in localStorage
-            localStorage.setItem('token', token);
+                // Update the AuthContext
+                setIsAuthenticated(true);
+                setUserName(name);
+                setUserEmail(responseEmail);
     
-            // Update the AuthContext to reflect that the user is authenticated
-            setIsAuthenticated(true);
-            setUserName(name);
-            setUserEmail(responseEmail);
+                // Clear error
+                setError('');
     
-            // Clear any previous error messages
-            setError('');
-    
-            // Navigate the user to the homepage or another protected route
-            navigate('/');
+                // Navigate the user to the homepage or another protected route
+                navigate('/');
+            } else {
+                setError("Unexpected response from the server.");
+            }
         } catch (error) {
-            console.error(error.response.data);
-            setError(error.response.data || "Signup failed. Please try again.");
+            console.error("Signup error:", error);
+            setError(error.response?.data || "Signup failed. Please try again.");
         }
-    };
+    };    
   
     if (isDesktop) {
         return (
