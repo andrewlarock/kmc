@@ -124,8 +124,14 @@ app.post('/signup', async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    return res.status(201).json({ message: 'User created successfully', token });
-  } catch (err) {
+    return res.status(201).json({ 
+      message: 'User created successfully', 
+      token, 
+      name: newUser.rows[0].name, 
+      email: newUser.rows[0].email 
+    });
+    
+    } catch (err) {
     console.error(err);
     return res.status(500).send('Server error');
   }
