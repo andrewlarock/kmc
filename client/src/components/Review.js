@@ -8,6 +8,7 @@ import axios from 'axios';
 const Review = ({ id, university_id, course_id, professor, code, number, difficulty, workload, enjoyment, recommend, text, tags, timestamp }) => {
     const navigate = useNavigate();
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 475);
+    const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
 
     // Parse the tags string into an array because we had to change how the database handles tags with deployment
     let tagArray;
@@ -35,12 +36,13 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
     useEffect(() => {
         // Event listener to detect screen resizing
         const handleResize = () => {
-          setIsDesktop(window.innerWidth >= 475); // Update state based on screen size
+            setIsDesktop(window.innerWidth >= 475); // Update state based on screen size
+            setIsLandscape(window.innerWidth > window.innerHeight); // Update landscape mode check
         };
     
         window.addEventListener('resize', handleResize);
         return () => {
-          window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
@@ -226,6 +228,95 @@ const Review = ({ id, university_id, course_id, professor, code, number, difficu
                 </div>
 
             </div>
+        );
+    }
+
+    if (isLandscape) {
+        return (
+        <div className='review-m'>
+            <div className='review-very-top-m'>
+                <div className='review-very-top-left-m'>
+                    <div className='review-course-m'>
+                    <img src={require('../css/images/cap.png')} alt="Icon 1" />
+                        {university_id && course_id ? (
+                            <span onClick={() => {navigate(`/university/${university_id}/${course_id}`); window.scrollTo(0, 0);}} style={{ cursor: 'pointer' }}>
+                                {code}{number}
+                            </span>
+                        ) : (
+                            <span style={{ textDecoration: 'none' }}>
+                                {code}{number}
+                            </span>
+                        )}
+                    </div>
+                </div>
+
+                <div className='review-very-top-right-m'>
+                    <div className='review-timestamp-m'>
+                        {formattedDate}
+                    </div>
+                </div>
+            </div>
+
+            <div className='review-top-m'>
+                <div className='review-top-text-m'>
+                    Taken With: &nbsp;
+                    <b className={`semi-bold-m ${professor.length > 20 ? 'professor-name-small-m' : 'professor-name-m'}`}>
+                        {professor}
+                    </b>
+                </div>
+                <div className='review-top-text-m'>
+                    Recommended: &nbsp;<b className='semi-bold-m'>{recommend}</b>
+                </div>
+
+                <div className='review-tags-box-m'>
+                    <div className='review-tags-container-m'>
+                    {tagArray.map((tag, index) => (
+                        <Tag key={index} name={tag} isSelected={false} isClickable={false} />
+                    ))}
+                    </div>
+                </div>
+                
+            </div>
+
+            <div className='review-middle-m'>
+                <div className='review-review-m'>
+                    {text}
+                </div>
+            </div>
+
+            <div className='review-bottom-m'>
+                <div className='review-difficulty-box-m'>
+                    <div className='review-box-header-m'>Difficulty</div>
+                    <div className='review-box-score-m'>{difficulty}<span className="score-out-of-m">/10</span></div>
+                    <div className={difScoreColor}>
+                        <div className='review-score-text-m'>{difScoreText}</div>
+                    </div>
+                </div>
+
+                <div className='review-workload-box-m'>
+                    <div className='review-box-header-m'>Workload</div>
+                    <div className='review-box-score-m'>{workload}<span className="score-out-of-m">/10</span></div>
+                    <div className={worScoreColor}>
+                        <div className='review-score-text-m'>{worScoreText}</div>
+                    </div>
+                </div>
+
+                <div className='review-enjoyment-box-m'>
+                    <div className='review-box-header-m'>Enjoyment</div>
+                    <div className='review-box-score-m'>{enjoyment}<span className="score-out-of-m">/10</span></div>
+                    <div className={enjScoreColor}>
+                        <div className='review-score-text-m'>{enjScoreText}</div>
+                    </div>
+                </div>
+
+                <div className='flag-box-m'>
+                    <a onClick={handleFlagClick}> 
+                        <img src={require('../css/images/flag.png')} alt="Flag Icon" />
+                    </a>
+                </div>
+            </div>
+
+        </div>
         );
     }
 
