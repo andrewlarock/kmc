@@ -176,7 +176,7 @@ const About = () => {
         <div className='about-info-htext-m'>
           <img src={require('../css/images/logo.png')} alt="Logo"/> 
         </div>
-        <div className='about-info-stext-m' style={{ marginBottom: '4.5rem' }}>
+        <div className='about-info-stext-m' style={{ marginBottom: '4rem' }}>
             At KickMyCourse, our mission is simple: to empower students with transparent, honest, and valuable feedback about the courses at their university. We believe that knowledge is power, and by sharing experiences and ratings, students can better plan their academic path and succeed in their studies. By fostering a supportive community of shared anonymous insights, we aim to make course selection less stressful and more informed. <br></br><br></br><b><u>FAQ's:</u></b>
             <br /><br />
             <a href="#search-school">Searching for Your School</a>
