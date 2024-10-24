@@ -15,6 +15,7 @@ const UniversityPage = () => {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 475);
+  const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
 
   const [showFilter, setShowFilter] = useState(false);
   const [sortOption, setSortOption] = useState('noFilter'); // State for sorting option
@@ -29,14 +30,17 @@ const UniversityPage = () => {
   useEffect(() => {
     // Event listener to detect screen resizing
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 475); // Update state based on screen size
+        setIsDesktop(window.innerWidth >= 475); // Update state based on screen size
+        setIsLandscape(window.innerWidth > window.innerHeight); // Update landscape mode check
     };
+
+    console.log(isLandscape)
 
     window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+        window.removeEventListener('resize', handleResize);
     };
-  }, []);
+}, []);
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -368,6 +372,146 @@ const UniversityPage = () => {
         {reviewsToDisplay.length < reviews.length && (
           <div className="load-more-container">
             <button className="load-more-button" onClick={loadMoreReviews}>
+              See More Reviews
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  if (isLandscape) {
+    return (
+      <div className='university-container-m'>
+        <div className="university-banner-m">
+            <div className="university-banner-text-m">
+                <div className='university-banner-htext-m'>{formattedName}</div>
+                <div className='university-banner-stext-m'>{formattedLocation}</div>
+            </div>
+        </div>
+            {/* Search bar with autofill */}
+            <div className='class-search-container-m'>
+            <input
+              type="text"
+              placeholder="Find a class (e.g., MATH341)"
+              className="class-search-bar-m"
+              value={input}
+              onChange={handleInputChange}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleCourseSelection(input);
+                  e.target.blur(); // Dismiss the keyboard
+                }
+              }}
+            />
+            {showDropdown && (
+              <div className="course-dropdown-container-m">
+                <div className="course-white-space-m"></div>
+                <ul className='course-dropdown-m'>
+                {filteredCourses.map((course, index) => (
+                  <li
+                    key={index}
+                    className="course-dropdown-item-m"
+                    onClick={() => {
+                      handleCourseSelection(course);
+                    }}
+                  >
+                    <div className="course-dropdown-name-m">
+                      <img src={require('../css/images/cap.png')} alt="Cap"/> 
+                      {course}
+                    </div>
+                    <div className="course-dropdown-location-m">{formattedName}</div>
+
+                  </li>
+                ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {/* Popup Message */}
+          {feedbackU && (
+            <div className="university-popup-message-m">
+              {feedbackMessageU}
+            </div>
+          )}
+
+        <div className='university-reviews-header-container-m'>
+
+          <div className='university-reviews-header-left-m'>
+            <img src={require('../css/images/logo.png')} alt="Logo"/>
+          </div>
+          
+          <div className='university-reviews-header-right-m'>
+            reviews from students at <b>{formattedName}&nbsp;</b>for<b> all courses</b>:
+          </div>
+
+        </div>
+
+        <div className='university-button-container-m'>
+
+          <div className='university-button-container-left-m'>
+            <button className="university-button-m" onClick={() => {navigate(`/review-form/${id}`); window.scrollTo(0, 0) }}>
+              <div className='university-button-text-m'>
+                <img src={require('../css/images/pencil.png')} alt="Pencil"/>
+                Post Review
+              </div>
+            </button>
+          </div>
+
+          <div className='university-button-container-right-m'>
+            <button
+              className="university-button-m"
+              onClick={() => setShowFilter(!showFilter)}
+            >
+              <div className='university-button-text-m'>
+                <img src={require('../css/images/filter.png')} alt="Filter" /> 
+                Filter Results
+              </div>
+            </button>
+
+            {showFilter && (
+              <div className="university-filter-dropdown-m">
+                <label>Sort by Enjoyment:</label>
+                <select
+                  value={sortOption}
+                  onChange={(e) => setSortOption(e.target.value)}
+                >
+                  <option value="noFilter">No filter selected</option>
+                  <option value="highest">Highest First</option>
+                  <option value="lowest">Lowest First</option>
+                </select>
+              </div>
+            )}
+          </div>
+
+        </div>
+
+        <div className='reviews-container-m'>
+          {reviewsToDisplay.map((review, index) => (
+            <Review
+              key={index}
+              id={review.id}
+              university_id={review.university_id}
+              course_id={review.course_id}
+              professor={review.professor}
+              code={review.cc}
+              number={review.cn}
+              difficulty={review.difficulty}
+              workload={review.workload}
+              enjoyment={review.enjoyment}
+              recommend={review.recommended}
+              text={review.review}
+              tags={review.tags}
+              timestamp={review.timestamp}
+            />
+          ))}
+        </div>
+
+        {/* Show Load More button if there are more reviews to load */}
+        {reviewsToDisplay.length < reviews.length && (
+          <div className="load-more-container-m">
+            <button className="load-more-button-m" onClick={loadMoreReviews}>
               See More Reviews
             </button>
           </div>
