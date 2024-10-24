@@ -82,6 +82,13 @@
     padding-right: 1rem;
 }
 
+@media screen and (max-width: 950px) {
+    .review-top-text {
+        font-size: 12px;
+        margin-left: 16px;
+    }
+}
+
 .semi-bold {
     font-weight: 600;
 }
@@ -90,8 +97,27 @@
     font-size: clamp(12px, 1.5vw, 17px); 
 }
 
+@media screen and (max-width: 950px) {
+    .professor-name {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .review-top-text {
+        font-size: 12px;
+        margin-left: clamp(1rem, 4vw, 2rem);
+    }
+}
+
 .professor-name-small {
     font-size: clamp(10px, 1.5vw, 14px); 
+}
+
+@media screen and (max-width: 950px) {
+    .professor-name-small {
+        font-size: 10px;
+    }
 }
 
 .review-timestamp {
