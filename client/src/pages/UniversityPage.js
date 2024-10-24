@@ -343,7 +343,7 @@ const UniversityPage = () => {
 
         </div>
 
-        <div className={window.innerWidth < 950 ? 'reviews-container-m' : 'reviews-container'}>
+        <div className='reviews-container'>
           {reviewsToDisplay.map((review, index) => (
             <Review
               key={index}
