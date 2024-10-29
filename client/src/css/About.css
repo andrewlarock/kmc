@@ -32,6 +32,7 @@
 
 .about-info-container {
     width: 70%;
+    max-width: 1500px;
     margin-left: 15%;
     margin-top: 2rem;
 }
@@ -60,6 +61,7 @@
 
 .about-subbanner {
     width: 80%;
+    max-width: 1700px;
     margin-left: 10%;
     height: 125px; 
     background-color: #D3DDD7;
