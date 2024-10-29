@@ -73,7 +73,7 @@ const Guidelines = () => {
           Do not submit multiple reviews for the same course. Each course should have only one review per student to ensure fair representation and clarity in feedback.<br></br><br></br>
           
           <b>Post Spam or Promotional Content:</b>&nbsp;
-          Do not use the review section to advertise or promote other courses, businesses, or services. Your review should focus on the course and its merits, not as a platform for marketing.
+          Do not use the review section to advertise or promote other businesses or services. Your review should focus on the course and its merits, not as a platform for marketing.
           </div>
           <div className="guidelines-header">
           Flagging a Review:
@@ -140,7 +140,7 @@ const Guidelines = () => {
         Do not submit multiple reviews for the same course. Each course should have only one review per student to ensure fair representation and clarity in feedback.<br></br><br></br>
         
         <b>Post Spam or Promotional Content:</b>&nbsp;
-        Do not use the review section to advertise or promote other courses, businesses, or services. Your review should focus on the course and its merits, not as a platform for marketing.
+        Do not use the review section to advertise or promote other businesses or services. Your review should focus on the course and its merits, not as a platform for marketing.
         </div>
         <div className="guidelines-header-m">
         Flagging a Review:
