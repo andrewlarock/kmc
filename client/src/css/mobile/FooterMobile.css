@@ -2,37 +2,35 @@
     display: flex;
     flex-direction: column; 
     align-items: center; 
-    width: 80%; 
+    width: 85%;
+    margin-left: 7.5%;
     background-color: #f7f7f7;
-    padding: 2rem 0; 
+    /* border: 1px solid black; */
 }
 
 .footer-left-m,
-.footer-middle-m,
+.footer-mid-m,
 .footer-right-m {
-    width: 100%; 
     padding-top: .5rem; 
     padding-bottom: .5rem; 
     box-sizing: border-box;
-    text-align: center; 
-    margin-left: 20%;
+    text-align: center;
 }
 
-.footer-left-container-m,
-.footer-right-container-m {
-    margin: 0 auto; 
-}
-
-.footer-left-m {
+.footer-mid-m {
     margin-bottom: .75rem; 
 }
 
-.footer-middle-m {
+.footer-right-m {
+    padding-bottom: 2.25rem;
+}
+
+.footer-left-m {
     display: flex;
     justify-content: center; 
     gap: 40px; 
     margin-bottom: 1.75rem; 
-    margin-top: .75rem;
+    margin-top: 3rem;
 }
 
 .footer-icon-m {
@@ -41,12 +39,6 @@
     border-radius: 8px;
     transition: background-color 0.3s, transform 0.1s;
     cursor: pointer;
-}
-
-.footer-right-input-m {
-    width: 85%; 
-    max-width: 600px; 
-    margin: 0 auto;
 }
 
 .footer-right-m {
@@ -60,27 +52,27 @@
     transition: background-color 0.3s, transform 0.1s;
 }
 
-.footer-left-container-m {
+.footer-mid-container-m {
     text-align: center;
 }
 
-.footer-left-header-m {
+.footer-mid-header-m {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600; 
     font-size: clamp(15px, 1.2vw, 20px);
     color: #36454F;
-    margin-bottom: .8rem;
+    margin-bottom: .6rem;
 }
 
-.footer-left-subheader-m {
+.footer-mid-subheader-m {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300; 
     font-size: 10px;
     color: #242E34;
-    margin-bottom: .4rem;
+    margin-bottom: .3rem;
 }
 
-.footer-left-contact-m {
+.footer-mid-contact-m {
     display: flex; 
     align-items: center; 
     justify-content: center;
@@ -91,7 +83,7 @@
     padding: 0.5rem; 
 }
 
-.footer-left-contact-m img {
+.footer-mid-contact-m img {
     width: 15px;
     height: 15px;
     margin-right: .4rem;
@@ -106,7 +98,7 @@
     font-weight: 600; 
     font-size: clamp(15px, 1.2vw, 20px);
     color: #36454F;
-    margin-bottom: .8rem;
+    margin-bottom: .6rem;
     margin-top: .3rem;
 }
 
@@ -144,6 +136,7 @@
     font-size: 0.7rem;
     background-color: #ECECEC;
     margin-top: 0.2rem;
+    margin-right: 1rem;
 }
 
 .send-icon-m {
@@ -153,7 +146,8 @@
     transform: translateY(-50%);
     width: clamp(14px, 2vw, 18px);
     height: clamp(14px, 2vw, 18px);
-    cursor: pointer; 
+    cursor: pointer;
+    margin-right: 1rem;
 }
 
 .footer-right-input-m::placeholder {

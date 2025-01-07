@@ -201,6 +201,11 @@ const ReviewForm = () => {
           return;
         }
 
+        if (reviewReview.trim().length < 200) {
+            setError('Please make sure your review contains at least 200 characters so your review can be as helpful as possible to other students!');
+            return;
+        }
+
         try {
             // Fetch university ID by university name using HTTP request
             const schoolUppercase = reviewSchool.toUpperCase();
