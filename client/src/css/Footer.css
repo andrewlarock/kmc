@@ -52,7 +52,7 @@
     font-weight: 600; 
     font-size: clamp(15px, 1.2vw, 18px);
     color: #36454F;
-    margin-bottom: .8rem;
+    margin-bottom: .5rem;
 }
 
 .footer-left-subheader {
@@ -89,7 +89,7 @@
     font-weight: 600; 
     font-size: clamp(15px, 1.2vw, 18px);
     color: #36454F;
-    margin-bottom: .8rem;
+    margin-bottom: .5rem;
     margin-top: .3rem;
 }
 

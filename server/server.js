@@ -2,9 +2,8 @@ const express = require('express');
 const { Pool } = require('pg');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // Resource sharing, for when front-end and back-end are on dif ports
-const bcrypt = require('bcrypt'); // bcrypt for password hashing
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser'); // Add cookie-parser to handle cookies
 const { encode } = require('html-entities');
 const sanitizeHtml = require('sanitize-html');
 const validator = require('validator');
@@ -12,13 +11,12 @@ require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cookieParser()); // Enable cookie parsing
 
 // CORS configuration to allow specific origin and credentials
 const corsOptions = {
   origin: ['https://kickmycourse.com', 'https://bespoke-kataifi-e2f4d5.netlify.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-  credentials: true, // If you're using cookies for authentication
+  credentials: true,
 };
 
 app.use(cors(corsOptions));  // Apply CORS middleware with options
@@ -139,7 +137,6 @@ app.post('/signup', async (req, res) => {
 
 // Log out endpoint
 app.post('/logout', (req, res) => {
-  // No need to clear any cookies, just return a response
   res.status(200).json({ message: 'Logged out successfully' });
 });
 
