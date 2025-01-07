@@ -143,7 +143,7 @@ const Footer = () => {
   return (
     <footer className="footer-m">
 
-    <div className="footer-middle-m">
+    <div className="footer-left-m">
         <img 
           src={require('../css/images/instagram.png')} 
           alt="Instagram" 
@@ -167,15 +167,15 @@ const Footer = () => {
         />
       </div>
 
-      <div className="footer-left-m">
-        <div className='footer-left-container-m'>
-          <div className='footer-left-header-m'>
+      <div className="footer-mid-m">
+        <div className='footer-mid-container-m'>
+          <div className='footer-mid-header-m'>
             KickMyCourse
           </div>
-          <div className='footer-left-subheader-m'>
+          <div className='footer-mid-subheader-m'>
             This app was launched to empower college students with valuable insights into their classes. Our goal is to help students build the perfect schedule with real reviews and feedback from their peers.
           </div>
-          <div className='footer-left-contact-m'>
+          <div className='footer-mid-contact-m'>
           <img src={require('../css/images/contact.png')} alt="Contact"/> 
             a.larock1@outlook.com
           </div>
