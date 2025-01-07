@@ -53,18 +53,25 @@ const formatLocation = (location) => {
   return `${formattedCity}, ${state.toUpperCase()}`;
 };
 
-const getFontSize = (name) => {
-  return name.length > 60 ? '0.8rem' : '1rem'; // Adjust sizes as needed
+const getFontSize = (name) => { // niche font size changes for better ui readability
+  return name.length > 60 ? '0.8rem' : '1rem';
 };
 
 const Home = () => {
   const [searchInput, setSearchInput] = useState('');
   const [filteredUniversities, setFilteredUniversities] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [homePopupVisible, setHomePopupVisible] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 475);
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Trigger the home popup on page load
+    setHomePopupVisible(true);
+    setTimeout(() => {
+      setHomePopupVisible(false);
+    }, 6000);
+
     // Event listener to detect screen resizing
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 475); // Update state based on screen size
@@ -133,7 +140,7 @@ const Home = () => {
           <div className="search-container">
           <input
               type="text"
-              placeholder="Find your school"
+              placeholder="Find your school (e.g University at Buffalo)"
               className={`search-bar ${dropdownVisible ? 'no-shadow' : ''}`} // Conditional class for box shadow
               value={searchInput}
               onChange={handleInputChange}
@@ -162,7 +169,7 @@ const Home = () => {
                 </ul>
               </div>
             )}
-        </div>
+          </div>
         </div>
       </div>
     );
@@ -211,6 +218,12 @@ const Home = () => {
               </ul>
             </div>
           )}
+
+          {/* Home Popup Message for UB */}
+          {homePopupVisible && (
+          <div className="home-popup-message">Check out the University at Buffalo!</div>
+          )}
+
       </div>
       </div>
     </div>

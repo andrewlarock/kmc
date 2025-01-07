@@ -57,7 +57,7 @@
 .review-course {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600; 
-    font-size: clamp(15px, 1.35vw, 20px);
+    font-size: clamp(15px, 1.45vw, 20px);
     color: #242E34;
     line-height: 1; 
     display: flex;            

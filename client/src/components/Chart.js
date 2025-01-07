@@ -72,7 +72,7 @@ const Chart = ({ score }) => {
             />
             <text
                 x="52" // Position horizontally
-                y="45" // Position vertically
+                y="44.5" // Position vertically
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fontSize="18"
