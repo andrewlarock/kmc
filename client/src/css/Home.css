@@ -149,3 +149,20 @@
     margin-top: 0.2rem; 
     font-family: 'Montserrat', sans-serif; 
 }
+
+.home-popup-message {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400; 
+    font-size: .9rem;
+    padding: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 8px;
+    z-index: 1000;
+    animation: fadeInOut 6s forwards;
+    width: 60%;
+    margin-left: 19%;
+    margin-top: 3rem;
+}

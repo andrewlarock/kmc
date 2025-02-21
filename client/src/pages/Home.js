@@ -169,13 +169,13 @@ const Home = () => {
                 </ul>
               </div>
             )}
-
-            {/* Home Popup Message for UB */}
-            {homePopupVisible && (
-            <div className="home-popup-message">Check out the University at Buffalo!</div>
-            )}
-            
           </div>
+
+          {/* Home Popup Message for UB */}
+          {homePopupVisible && (
+          <div className="home-popup-message">Check out the University at Buffalo!</div>
+          )}
+          
         </div>
       </div>
     );
@@ -227,7 +227,7 @@ const Home = () => {
 
           {/* Home Popup Message for UB */}
           {homePopupVisible && (
-          <div className="home-popup-message">Check out the University at Buffalo!</div>
+          <div className="home-popup-message-mobile">Check out the University at Buffalo!</div>
           )}
 
         </div>
