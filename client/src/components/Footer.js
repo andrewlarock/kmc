@@ -155,7 +155,7 @@ const Footer = () => {
           src={require('../css/images/linkedin.png')} 
           alt="LinkedIn" 
           className="footer-icon-m" 
-          onClick={handleIconClick} 
+          onClick={() => window.open("https://www.linkedin.com/in/andrew-larock-363b66319/", "_blank")} 
           style={{ cursor: 'pointer' }} 
         />
         <img 

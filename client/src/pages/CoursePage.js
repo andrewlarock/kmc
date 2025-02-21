@@ -127,7 +127,7 @@ const CoursePage = () => {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/courses/${courseId}`); // Use the correct backend URL
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/courses/${courseId}`);
         
         if (response.status === 204) { // Handles course not being found
           console.error('Course not found');
@@ -147,7 +147,7 @@ const CoursePage = () => {
     };
 
     fetchCourseDetails();
-  }, [courseId]); // Add id to dependency array to refetch if it changes
+  }, [courseId]);
 
   useEffect(() => {
     const fetchUniversity = async () => {
@@ -198,7 +198,7 @@ const CoursePage = () => {
     }
   
     // Get the token from localStorage
-    const token = localStorage.getItem('token'); // Adjust the key as needed
+    const token = localStorage.getItem('token');
 
     console.log(id, courseId)
   
@@ -211,7 +211,7 @@ const CoursePage = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}` // Attach the token in the Authorization header
+            Authorization: `Bearer ${token}`
           }
         }
       );
