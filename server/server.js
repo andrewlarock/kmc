@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const { encode } = require('html-entities');
 const sanitizeHtml = require('sanitize-html');
 const validator = require('validator');
+const originRestrictionMiddleware = require('./middlewares/originRestrictionMiddleware');
 require('dotenv').config();
 
 const app = express();
@@ -19,9 +20,10 @@ const corsOptions = {
   credentials: true,
 };
 
+app.use(originRestrictionMiddleware); // Apply additional origin restriction access
 app.use(cors(corsOptions));  // Apply CORS middleware with options
 
-// Configure PostgreSQL client
+// Configure SQL client
 const pool = new Pool({
   connectionString: process.env.DB_URL, // Using environment variable for security
 });
